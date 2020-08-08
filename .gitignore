@@ -6,4 +6,5 @@
 *.elf
 *.exe
 *.AppImage
-
+lib/
+obj/
