@@ -523,4 +523,268 @@ typedef int_t int8_t;
 
 #endif
 
+#ifndef __uint8_t_defined
+# undef UINT8_MAX
+# undef UINT8_MIN
+# undef UINT8_T_C
+# undef UINT8_T_WIDTH
+# undef SIZEOF_UINT8_T
+# if CHAR_WIDTH == 8
+#  define __uint8_t_defined
+typedef schar_t uint8_t;
+/* By the time short existed CHAR_WIDTH was already 8 bits, as a result
+ * there is no need to check against it */
+# elif INT_WIDTH == 8
+#  define __uint8_t_defined
+typedef int_t uint8_t;
+# endif
+# ifdef __uint8_t_defined
+#  define UINT8_MAX 255
+# endif
+#endif /* __uint8_t_defined */
+
+#ifdef __uint8_t_defined
+
+#ifndef SIZEOF_UINT8_T
+# define SIZEOF_UINT8_T SIZEOF(UINT8_MAX)
+#endif
+
+#ifndef UINT8_T_WIDTH
+# define UINT8_T_WIDTH (SIZEOF_UINT8_T * CHAR_BIT)
+#endif
+
+#ifndef UINT8_END_BIT
+# define UINT8_END_BIT ~UINT8_MAX
+#endif
+
+#ifndef UINT8_T_C
+# define UINT8_T_C(VAL) VAL
+#endif
+
+#ifndef PRI_UINT8_T
+# define PRI_UINT8_T
+#endif
+
+#ifndef SCN_UINT8_T
+# ifndef CHAR_MAX
+#  define SCN_UINT8_T
+# else
+#  define SCN_UINT8_T "hh"
+# endif
+#endif
+
+#endif
+
+#ifndef __int_fast8_t_defined
+# undef INT_FAST8_MAX
+# undef INT_FAST8_MIN
+# undef INT_FAST8_T_C
+# undef INT_FAST8_T_WIDTH
+# undef SIZEOF_INT_FAST8_T
+# if CHAR_WIDTH >= 8
+#  define __int_fast8_t_defined
+typedef schar_t int_fast8_t;
+#  define INT_FAST8_MAX SCHAR_MAX
+#  define INT_FAST8_MIN SCHAR_MIN
+/* By the time short existed CHAR_WIDTH was already 8 bits, as a result
+ * there is no need to check against it */
+# elif INT_WIDTH >= 8
+#  define __int_fast8_t_defined
+typedef int_t int_fast8_t;
+#  define INT_FAST8_MAX INT_MAX
+#  define INT_FAST8_MIN INT_MIN
+# endif
+#endif /* __int_fast8_t_defined */
+
+#ifdef __int_fast8_t_defined
+
+#ifndef SIZEOF_INT_FAST8_T
+# define SIZEOF_INT_FAST8_T SIZEOF(INT_FAST8_MAX)
+#endif
+
+#ifndef INT_FAST8_T_WIDTH
+# define INT_FAST8_T_WIDTH (SIZEOF_INT_FAST8_T * CHAR_BIT)
+#endif
+
+#ifndef INT_FAST8_END_BIT
+# define INT_FAST8_END_BIT ~INT_FAST8_MAX
+#endif
+
+#ifndef INT_FAST8_T_C
+# define INT_FAST8_T_C(VAL) VAL
+#endif
+
+#ifndef PRI_INT_FAST8_T
+# define PRI_INT_FAST8_T
+#endif
+
+#ifndef SCN_INT_FAST8_T
+# if CHAR_WIDTH < 8
+#  define SCN_INT_FAST8_T
+# else
+#  define SCN_INT_FAST8_T "hh"
+# endif
+#endif
+
+#endif
+
+#ifndef __uint_fast8_t_defined
+# undef UINT_FAST8_MAX
+# undef UINT_FAST8_MIN
+# undef UINT_FAST8_T_C
+# undef UINT_FAST8_T_WIDTH
+# undef SIZEOF_UINT_FAST8_T
+# if CHAR_WIDTH >= 8
+#  define __uint_fast8_t_defined
+typedef schar_t uint_fast8_t;
+#  define UINT_FAST8_MAX SCHAR_MAX
+#  define UINT_FAST8_MIN SCHAR_MIN
+/* By the time short existed CHAR_WIDTH was already 8 bits, as a result
+ * there is no need to check against it */
+# elif INT_WIDTH >= 8
+#  define __uint_fast8_t_defined
+typedef int_t uint_fast8_t;
+#  define UINT_FAST8_MAX INT_MAX
+#  define UINT_FAST8_MIN INT_MIN
+# endif
+#endif /* __uint_fast8_t_defined */
+
+#ifdef __uint_fast8_t_defined
+
+#ifndef SIZEOF_UINT_FAST8_T
+# define SIZEOF_UINT_FAST8_T SIZEOF(UINT_FAST8_MAX)
+#endif
+
+#ifndef UINT_FAST8_T_WIDTH
+# define UINT_FAST8_T_WIDTH (SIZEOF_UINT_FAST8_T * CHAR_BIT)
+#endif
+
+#ifndef UINT_FAST8_END_BIT
+# define UINT_FAST8_END_BIT ~UINT_FAST8_MAX
+#endif
+
+#ifndef UINT_FAST8_T_C
+# define UINT_FAST8_T_C(VAL) VAL
+#endif
+
+#ifndef PRI_UINT_FAST8_T
+# define PRI_UINT_FAST8_T
+#endif
+
+#ifndef SCN_UINT_FAST8_T
+# if CHAR_WIDTH < 8
+#  define SCN_UINT_FAST8_T
+# else
+#  define SCN_UINT_FAST8_T "hh"
+# endif
+#endif
+
+#endif
+
+#ifndef __int_least8_t_defined
+# undef INT_LEAST8_MAX
+# undef INT_LEAST8_MIN
+# undef INT_LEAST8_T_C
+# undef INT_LEAST8_T_WIDTH
+# undef SIZEOF_INT_LEAST8_T
+# if CHAR_WIDTH >= 8
+#  define __int_least8_t_defined
+typedef schar_t int_least8_t;
+#  define INT_LEAST8_MAX SCHAR_MAX
+#  define INT_LEAST8_MIN SCHAR_MIN
+/* By the time short existed CHAR_WIDTH was already 8 bits, as a result
+ * there is no need to check against it */
+# elif INT_WIDTH >= 8
+#  define __int_least8_t_defined
+typedef int_t int_least8_t;
+#  define INT_LEAST8_MAX INT_MAX
+#  define INT_LEAST8_MIN INT_MIN
+# endif
+#endif /* __int_least8_t_defined */
+
+#ifdef __int_least8_t_defined
+
+#ifndef SIZEOF_INT_LEAST8_T
+# define SIZEOF_INT_LEAST8_T SIZEOF(INT_LEAST8_MAX)
+#endif
+
+#ifndef INT_LEAST8_T_WIDTH
+# define INT_LEAST8_T_WIDTH (SIZEOF_INT_LEAST8_T * CHAR_BIT)
+#endif
+
+#ifndef INT_LEAST8_END_BIT
+# define INT_LEAST8_END_BIT ~INT_LEAST8_MAX
+#endif
+
+#ifndef INT_LEAST8_T_C
+# define INT_LEAST8_T_C(VAL) VAL
+#endif
+
+#ifndef PRI_INT_LEAST8_T
+# define PRI_INT_LEAST8_T
+#endif
+
+#ifndef SCN_INT_LEAST8_T
+# if CHAR_WIDTH < 8
+#  define SCN_INT_LEAST8_T
+# else
+#  define SCN_INT_LEAST8_T "hh"
+# endif
+#endif
+
+#endif
+
+#ifndef __uint_least8_t_defined
+# undef UINT_LEAST8_MAX
+# undef UINT_LEAST8_MIN
+# undef UINT_LEAST8_T_C
+# undef UINT_LEAST8_T_WIDTH
+# undef SIZEOF_UINT_LEAST8_T
+# if CHAR_WIDTH >= 8
+#  define __uint_least8_t_defined
+typedef schar_t uint_least8_t;
+#  define UINT_LEAST8_MAX SCHAR_MAX
+#  define UINT_LEAST8_MIN SCHAR_MIN
+/* By the time short existed CHAR_WIDTH was already 8 bits, as a result
+ * there is no need to check against it */
+# elif INT_WIDTH >= 8
+#  define __uint_least8_t_defined
+typedef int_t uint_least8_t;
+#  define UINT_LEAST8_MAX INT_MAX
+#  define UINT_LEAST8_MIN INT_MIN
+# endif
+#endif /* __uint_least8_t_defined */
+
+#ifdef __uint_least8_t_defined
+
+#ifndef SIZEOF_UINT_LEAST8_T
+# define SIZEOF_UINT_LEAST8_T SIZEOF(UINT_LEAST8_MAX)
+#endif
+
+#ifndef UINT_LEAST8_T_WIDTH
+# define UINT_LEAST8_T_WIDTH (SIZEOF_UINT_LEAST8_T * CHAR_BIT)
+#endif
+
+#ifndef UINT_LEAST8_END_BIT
+# define UINT_LEAST8_END_BIT ~UINT_LEAST8_MAX
+#endif
+
+#ifndef UINT_LEAST8_T_C
+# define UINT_LEAST8_T_C(VAL) VAL
+#endif
+
+#ifndef PRI_UINT_LEAST8_T
+# define PRI_UINT_LEAST8_T
+#endif
+
+#ifndef SCN_UINT_LEAST8_T
+# if CHAR_WIDTH < 8
+#  define SCN_UINT_LEAST8_T
+# else
+#  define SCN_UINT_LEAST8_T "hh"
+# endif
+#endif
+
+#endif
+
 #endif /* FBSTDINT_H */

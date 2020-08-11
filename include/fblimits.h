@@ -170,8 +170,12 @@
 #define SHRT_MAX MAX_FOR_2BYTE
 #endif
 
+#ifndef SHRT_MIN
+#define SHRT_MIN ((-SHRT_MAX)-1)
+#endif
+
 #ifndef USHRT_MAX
-#define USHRT_MAX MAX_FOR_2BYTE
+#define USHRT_MAX (0u | (SHRT_MAX << 1) | 1u)
 #endif
 
 #ifndef SIZEOF_SHRT
@@ -182,12 +186,39 @@
 #define SHRT_WIDTH (SIZEOF_SHRT * CHAR_BIT)
 #endif
 
+#ifndef INT_MAX
+#define INT_MAX CCINT_MAX
+#endif
+
+#ifndef INT_MIN
+#define INT_MIN ((-INT_MAX)-1)
+#endif
+
+#ifndef UINT_MAX
+#define UINT_MAX (0u | (INT_MAX << 1) | 1u)
+#endif
+
+
 #ifndef SIZEOF_INT
 #define SIZEOF_INT SIZEOF(UINT_MAX)
 #endif
 
 #ifndef INT_WIDTH
 #define INT_WIDTH (SIZEOF_INT * CHAR_BIT)
+#endif
+
+#ifdef CCLONG_MAX
+
+#ifndef LONG_MAX
+#define LONG_MAX CCLONG_MAX
+#endif
+
+#ifndef LONG_MIN
+#define LONG_MIN ((-LONG_MAX)-1)
+#endif
+
+#ifndef ULONG_MAX
+#define ULONG_MAX (0lu | (LONG_MAX << 1) | 1lu)
 #endif
 
 #ifndef SIZEOF_LONG
@@ -198,12 +229,30 @@
 #define LONG_WIDTH (SIZEOF_LONG * CHAR_BIT)
 #endif
 
-#ifdef LLONG_MAX
+#endif
+
+#ifdef CCLLONG_MAX
+
+#ifndef LLONG_MAX
+#define LLONG_MAX CCLLONG_MAX
+#endif
+
+#ifndef LLONG_MIN
+#define LLONG_MIN ((-LLONG_MAX)-1)
+#endif
+
+#ifndef ULLONG_MAX
+#define ULLONG_MAX (0llu | (LLONG_MAX << 1) | 1llu)
+#endif
 
 #ifndef SIZEOF_LLONG
 #define SIZEOF_LLONG SIZEOF(ULLONG_MAX)
 #endif
 
-#endif /* LLONG_MAX */
+#ifndef LLONG_WIDTH
+#define LLONG_WIDTH (SIZEOF_LLONG * CHAR_BIT)
+#endif
+
+#endif /* CCLLONG_MAX */
 
 #endif /* FBLIMITS_H */
