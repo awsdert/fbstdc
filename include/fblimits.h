@@ -122,7 +122,7 @@
 #endif
 
 #ifndef MAX_FOR_1BYTE
-#define MAX_FOR_1BYTE (~((~0) << (CHAR_BIT-1)))
+#define MAX_FOR_1BYTE (~((CCINT_MAX) << (CHAR_BIT-1)))
 #endif
 
 #ifndef MIN_FOR_1BYTE
