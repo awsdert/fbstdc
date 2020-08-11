@@ -148,14 +148,18 @@ typedef ulong_t size_t;
 # undef PTRDIFF_END_BIT
 # undef PRI_PTRDIFF_T
 # undef SCN_PTRDIFF_T
-# ifdef LONG_MAX
-typedef long_t ptrdiff_t;
-#  define PTRDIFF_MAX LONG_MAX
-#  define PTRDIFF_MIN LONG_MIN
-# else
-typedef int_t ptrdiff_t;
+# ifndef LONG_MAX
+typedef uint_t ptrdiff_t;
 #  define PTRDIFF_MAX INT_MAX
 #  define PTRDIFF_MIN INT_MIN
+# elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
+typedef ullong_t ptrdiff_t;
+#  define PTRDIFF_MAX LLONG_MAX
+#  define PTRDIFF_MIN LLONG_MIN
+# else
+typedef ulong_t ptrdiff_t;
+#  define PTRDIFF_MAX LONG_MAX
+#  define PTRDIFF_MIN LONG_MIN
 # endif
 #endif /* __ptrdiff_t_defined */
 
@@ -175,7 +179,7 @@ typedef int_t ptrdiff_t;
 #ifndef PTRDIFF_T_C
 # ifndef LONG_MAX
 #  define PTRDIFF_T_C(VAL) VAL
-# elif PTRDIFF_MAX > ULONG_MAX
+# elif PTRDIFF_MAX > LONG_MAX
 #  define PTRDIFF_T_C(VAL) VAL##LL
 # else
 #  define PTRDIFF_T_C(VAL) VAL##L
@@ -185,7 +189,7 @@ typedef int_t ptrdiff_t;
 #ifndef PRI_PTRDIFF_T
 # ifndef LONG_MAX
 #  define PRI_PTRDIFF_T
-# elif PTRDIFF_MAX > ULONG_MAX
+# elif PTRDIFF_MAX > LONG_MAX
 #  define PRI_PTRDIFF_T "ll"
 # else
 #  define PRI_PTRDIFF_T "l"
@@ -195,11 +199,328 @@ typedef int_t ptrdiff_t;
 #ifndef SCN_PTRDIFF_T
 # ifndef LONG_MAX
 #  define SCN_PTRDIFF_T
-# elif PTRDIFF_MAX > ULONG_MAX
+# elif PTRDIFF_MAX > LONG_MAX
 #  define SCN_PTRDIFF_T "ll"
 # else
 #  define SCN_PTRDIFF_T "l"
 # endif
+#endif
+
+#ifndef __intptr_t_defined
+# define __intptr_t_defined
+# undef INTPTR_MAX
+# undef INTPTR_MIN
+# undef INTPTR_T_C
+# undef INTPTR_T_WIDTH
+# undef SIZEOF_INTPTR_T
+# undef INTPTR_END_BIT
+# undef PRI_INTPTR_T
+# undef SCN_INTPTR_T
+# ifndef LONG_MAX
+typedef uint_t intptr_t;
+#  define INTPTR_MAX INT_MAX
+#  define INTPTR_MIN INT_MIN
+# elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
+typedef ullong_t intptr_t;
+#  define INTPTR_MAX LLONG_MAX
+#  define INTPTR_MIN LLONG_MIN
+# else
+typedef ulong_t intptr_t;
+#  define INTPTR_MAX LONG_MAX
+#  define INTPTR_MIN LONG_MIN
+# endif
+#endif /* __intptr_t_defined */
+
+
+#ifndef SIZEOF_INTPTR_T
+# define SIZEOF_INTPTR_T SIZEOF(INTPTR_MAX)
+#endif
+
+#ifndef INTPTR_T_WIDTH
+# define INTPTR_T_WIDTH (SIZEOF_INTPTR_T * CHAR_BIT)
+#endif
+
+#ifndef INTPTR_END_BIT
+# define INTPTR_END_BIT ~(INTPTR_MAX>>1)
+#endif
+
+#ifndef INTPTR_T_C
+# ifndef LONG_MAX
+#  define INTPTR_T_C(VAL) VAL
+# elif INTPTR_MAX > LONG_MAX
+#  define INTPTR_T_C(VAL) VAL##LL
+# else
+#  define INTPTR_T_C(VAL) VAL##L
+# endif
+#endif
+
+#ifndef PRI_INTPTR_T
+# ifndef LONG_MAX
+#  define PRI_INTPTR_T
+# elif INTPTR_MAX > LONG_MAX
+#  define PRI_INTPTR_T "ll"
+# else
+#  define PRI_INTPTR_T "l"
+# endif
+#endif
+
+#ifndef SCN_INTPTR_T
+# ifndef LONG_MAX
+#  define SCN_INTPTR_T
+# elif INTPTR_MAX > LONG_MAX
+#  define SCN_INTPTR_T "ll"
+# else
+#  define SCN_INTPTR_T "l"
+# endif
+#endif
+
+#ifndef __uintptr_t_defined
+# define __uintptr_t_defined
+# undef UINTPTR_MAX
+# undef UINTPTR_T_C
+# undef UINTPTR_T_WIDTH
+# undef SIZEOF_UINTPTR_T
+# undef UINTPTR_END_BIT
+# undef PRI_UINTPTR_T
+# undef SCN_UINTPTR_T
+# ifndef LONG_MAX
+typedef uint_t uintptr_t;
+#  define UINTPTR_MAX UINT_MAX
+# elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
+typedef ullong_t uintptr_t;
+#  define UINTPTR_MAX ULLONG_MAX
+# else
+typedef ulong_t uintptr_t;
+#  define UINTPTR_MAX ULONG_MAX
+# endif
+#endif /* __uintptr_t_defined */
+
+
+#ifndef SIZEOF_UINTPTR_T
+# define SIZEOF_UINTPTR_T SIZEOF(UINTPTR_MAX)
+#endif
+
+#ifndef UINTPTR_T_WIDTH
+# define UINTPTR_T_WIDTH (SIZEOF_UINTPTR_T * CHAR_BIT)
+#endif
+
+#ifndef UINTPTR_END_BIT
+# define UINTPTR_END_BIT ~(UINTPTR_MAX>>1)
+#endif
+
+#ifndef UINTPTR_T_C
+# ifndef LONG_MAX
+#  define UINTPTR_T_C(VAL) VAL
+# elif UINTPTR_MAX > ULONG_MAX
+#  define UINTPTR_T_C(VAL) VAL##ULL
+# else
+#  define UINTPTR_T_C(VAL) VAL##UL
+# endif
+#endif
+
+#ifndef PRI_UINTPTR_T
+# ifndef LONG_MAX
+#  define PRI_UINTPTR_T
+# elif UINTPTR_MAX > ULONG_MAX
+#  define PRI_UINTPTR_T "ll"
+# else
+#  define PRI_UINTPTR_T "l"
+# endif
+#endif
+
+#ifndef SCN_UINTPTR_T
+# ifndef LONG_MAX
+#  define SCN_UINTPTR_T
+# elif UINTPTR_MAX > ULONG_MAX
+#  define SCN_UINTPTR_T "ll"
+# else
+#  define SCN_UINTPTR_T "l"
+# endif
+#endif
+
+#ifndef __intmax_t_defined
+# define __intmax_t_defined
+# undef INTMAX_MAX
+# undef INTMAX_MIN
+# undef INTMAX_T_C
+# undef INTMAX_T_WIDTH
+# undef SIZEOF_INTMAX_T
+# undef INTMAX_END_BIT
+# undef PRI_INTMAX_T
+# undef SCN_INTMAX_T
+# ifndef LONG_MAX
+typedef uint_t intmax_t;
+#  define INTMAX_MAX INT_MAX
+#  define INTMAX_MIN INT_MIN
+# elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
+typedef ullong_t intmax_t;
+#  define INTMAX_MAX LLONG_MAX
+#  define INTMAX_MIN LLONG_MIN
+# else
+typedef ulong_t intmax_t;
+#  define INTMAX_MAX LONG_MAX
+#  define INTMAX_MIN LONG_MIN
+# endif
+#endif /* __intmax_t_defined */
+
+
+#ifndef SIZEOF_INTMAX_T
+# define SIZEOF_INTMAX_T SIZEOF(INTMAX_MAX)
+#endif
+
+#ifndef INTMAX_T_WIDTH
+# define INTMAX_T_WIDTH (SIZEOF_INTMAX_T * CHAR_BIT)
+#endif
+
+#ifndef INTMAX_END_BIT
+# define INTMAX_END_BIT ~(INTMAX_MAX>>1)
+#endif
+
+#ifndef INTMAX_T_C
+# ifndef LONG_MAX
+#  define INTMAX_T_C(VAL) VAL
+# elif INTMAX_MAX > LONG_MAX
+#  define INTMAX_T_C(VAL) VAL##LL
+# else
+#  define INTMAX_T_C(VAL) VAL##L
+# endif
+#endif
+
+#ifndef PRI_INTMAX_T
+# ifndef LONG_MAX
+#  define PRI_INTMAX_T
+# elif INTMAX_MAX > LONG_MAX
+#  define PRI_INTMAX_T "ll"
+# else
+#  define PRI_INTMAX_T "l"
+# endif
+#endif
+
+#ifndef SCN_INTMAX_T
+# ifndef LONG_MAX
+#  define SCN_INTMAX_T
+# elif INTMAX_MAX > LONG_MAX
+#  define SCN_INTMAX_T "ll"
+# else
+#  define SCN_INTMAX_T "l"
+# endif
+#endif
+
+#ifndef __uintmax_t_defined
+# define __uintmax_t_defined
+# undef UINTMAX_MAX
+# undef UINTMAX_T_C
+# undef UINTMAX_T_WIDTH
+# undef SIZEOF_UINTMAX_T
+# undef UINTMAX_END_BIT
+# undef PRI_UINTMAX_T
+# undef SCN_UINTMAX_T
+# ifndef LONG_MAX
+typedef uint_t uintmax_t;
+#  define UINTMAX_MAX UINT_MAX
+# elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
+typedef ullong_t uintmax_t;
+#  define UINTMAX_MAX ULLONG_MAX
+# else
+typedef ulong_t uintmax_t;
+#  define UINTMAX_MAX ULONG_MAX
+# endif
+#endif /* __uintmax_t_defined */
+
+
+#ifndef SIZEOF_UINTMAX_T
+# define SIZEOF_UINTMAX_T SIZEOF(UINTMAX_MAX)
+#endif
+
+#ifndef UINTMAX_T_WIDTH
+# define UINTMAX_T_WIDTH (SIZEOF_UINTMAX_T * CHAR_BIT)
+#endif
+
+#ifndef UINTMAX_END_BIT
+# define UINTMAX_END_BIT ~(UINTMAX_MAX>>1)
+#endif
+
+#ifndef UINTMAX_T_C
+# ifndef LONG_MAX
+#  define UINTMAX_T_C(VAL) VAL
+# elif UINTMAX_MAX > ULONG_MAX
+#  define UINTMAX_T_C(VAL) VAL##ULL
+# else
+#  define UINTMAX_T_C(VAL) VAL##UL
+# endif
+#endif
+
+#ifndef PRI_UINTMAX_T
+# ifndef LONG_MAX
+#  define PRI_UINTMAX_T
+# elif UINTMAX_MAX > ULONG_MAX
+#  define PRI_UINTMAX_T "ll"
+# else
+#  define PRI_UINTMAX_T "l"
+# endif
+#endif
+
+#ifndef SCN_UINTMAX_T
+# ifndef LONG_MAX
+#  define SCN_UINTMAX_T
+# elif UINTMAX_MAX > ULONG_MAX
+#  define SCN_UINTMAX_T "ll"
+# else
+#  define SCN_UINTMAX_T "l"
+# endif
+#endif
+
+#ifndef __int8_t_defined
+# undef INT8_MAX
+# undef INT8_MIN
+# undef INT8_T_C
+# undef INT8_T_WIDTH
+# undef SIZEOF_INT8_T
+# if CHAR_WIDTH == 8
+#  define __int8_t_defined
+typedef schar_t int8_t;
+/* By the time short existed CHAR_WIDTH was already 8 bits, as a result
+ * there is no need to check against it */
+# elif INT_WIDTH == 8
+#  define __int8_t_defined
+typedef int_t int8_t;
+# endif
+# ifdef __int8_t_defined
+#  define INT8_MAX 127
+#  define INT8_MIN -128
+# endif
+#endif /* __int8_t_defined */
+
+#ifdef __int8_t_defined
+
+#ifndef SIZEOF_INT8_T
+# define SIZEOF_INT8_T SIZEOF(INT8_MAX)
+#endif
+
+#ifndef INT8_T_WIDTH
+# define INT8_T_WIDTH (SIZEOF_INT8_T * CHAR_BIT)
+#endif
+
+#ifndef INT8_END_BIT
+# define INT8_END_BIT ~INT8_MAX
+#endif
+
+#ifndef INT8_T_C
+# define INT8_T_C(VAL) VAL
+#endif
+
+#ifndef PRI_INT8_T
+# define PRI_INT8_T
+#endif
+
+#ifndef SCN_INT8_T
+# ifndef CHAR_MAX
+#  define SCN_INT8_T
+# else
+#  define SCN_INT8_T "hh"
+# endif
+#endif
+
 #endif
 
 #endif /* FBSTDINT_H */
