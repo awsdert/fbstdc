@@ -118,15 +118,15 @@
 	(((PRV) >= CCINT_MAX) ? PRV : ((PRV) * ((PRV) + (PRV) + 4)) + 1)
 
 #ifndef UMAX_FOR_1BYTE
-#define UMAX_FOR_1BYTE UCHAR_MAX
+#define UMAX_FOR_1BYTE (~((~0u) << CHAR_BIT))
 #endif
 
 #ifndef MAX_FOR_1BYTE
-#define MAX_FOR_1BYTE SCHAR_MAX
+#define MAX_FOR_1BYTE (~((~0) << (CHAR_BIT-1)))
 #endif
 
 #ifndef MIN_FOR_1BYTE
-#define MIN_FOR_1BYTE SCHAR_MIN
+#define MIN_FOR_1BYTE ((-MAX_FOR_1BYTE)-1)
 #endif
 
 #ifndef UMAX_FOR_2BYTE
