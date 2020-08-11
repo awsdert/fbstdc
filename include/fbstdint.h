@@ -217,15 +217,15 @@ typedef long_t ptrdiff_t;
 # undef PRI_INTPTR_T
 # undef SCN_INTPTR_T
 # ifndef LONG_MAX
-typedef uint_t intptr_t;
+typedef int_t intptr_t;
 #  define INTPTR_MAX INT_MAX
 #  define INTPTR_MIN INT_MIN
 # elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
-typedef ullong_t intptr_t;
+typedef llong_t intptr_t;
 #  define INTPTR_MAX LLONG_MAX
 #  define INTPTR_MIN LLONG_MIN
 # else
-typedef ulong_t intptr_t;
+typedef long_t intptr_t;
 #  define INTPTR_MAX LONG_MAX
 #  define INTPTR_MIN LONG_MIN
 # endif
@@ -349,15 +349,15 @@ typedef ulong_t uintptr_t;
 # undef PRI_INTMAX_T
 # undef SCN_INTMAX_T
 # ifndef LONG_MAX
-typedef uint_t intmax_t;
+typedef int_t intmax_t;
 #  define INTMAX_MAX INT_MAX
 #  define INTMAX_MIN INT_MIN
 # elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
-typedef ullong_t intmax_t;
+typedef llong_t intmax_t;
 #  define INTMAX_MAX LLONG_MAX
 #  define INTMAX_MIN LLONG_MIN
 # else
-typedef ulong_t intmax_t;
+typedef long_t intmax_t;
 #  define INTMAX_MAX LONG_MAX
 #  define INTMAX_MIN LONG_MIN
 # endif
@@ -531,12 +531,12 @@ typedef int_t int8_t;
 # undef SIZEOF_UINT8_T
 # if CHAR_WIDTH == 8
 #  define __uint8_t_defined
-typedef schar_t uint8_t;
+typedef uchar_t uint8_t;
 /* By the time short existed CHAR_WIDTH was already 8 bits, as a result
  * there is no need to check against it */
 # elif INT_WIDTH == 8
 #  define __uint8_t_defined
-typedef int_t uint8_t;
+typedef uint_t uint8_t;
 # endif
 # ifdef __uint8_t_defined
 #  define UINT8_MAX 255
@@ -636,14 +636,14 @@ typedef int_t int_fast8_t;
 # undef SIZEOF_UINT_FAST8_T
 # if CHAR_WIDTH >= 8
 #  define __uint_fast8_t_defined
-typedef schar_t uint_fast8_t;
+typedef uchar_t uint_fast8_t;
 #  define UINT_FAST8_MAX SCHAR_MAX
 #  define UINT_FAST8_MIN SCHAR_MIN
 /* By the time short existed CHAR_WIDTH was already 8 bits, as a result
  * there is no need to check against it */
 # elif INT_WIDTH >= 8
 #  define __uint_fast8_t_defined
-typedef int_t uint_fast8_t;
+typedef uint_t uint_fast8_t;
 #  define UINT_FAST8_MAX INT_MAX
 #  define UINT_FAST8_MIN INT_MIN
 # endif
@@ -742,14 +742,14 @@ typedef int_t int_least8_t;
 # undef SIZEOF_UINT_LEAST8_T
 # if CHAR_WIDTH >= 8
 #  define __uint_least8_t_defined
-typedef schar_t uint_least8_t;
+typedef uchar_t uint_least8_t;
 #  define UINT_LEAST8_MAX SCHAR_MAX
 #  define UINT_LEAST8_MIN SCHAR_MIN
 /* By the time short existed CHAR_WIDTH was already 8 bits, as a result
  * there is no need to check against it */
 # elif INT_WIDTH >= 8
 #  define __uint_least8_t_defined
-typedef int_t uint_least8_t;
+typedef uint_t uint_least8_t;
 #  define UINT_LEAST8_MAX INT_MAX
 #  define UINT_LEAST8_MIN INT_MIN
 # endif
