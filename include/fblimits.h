@@ -4,19 +4,66 @@
 #include "fbarch.h"
 
 #ifndef NO_STDC
-#ifdef __cplusplus
-#include <climits>
-#else
-#include <limits.h>
+# ifdef __cplusplus
+#  include <climits>
+# else
+#  include <limits.h>
+# endif
 #endif
+
+#ifndef SIZEOF_CHAR
+# define SIZEOF_CHAR 1
 #endif
 
 #ifndef CHAR_BIT
-#define CHAR_BIT FB_ARCH_CHAR_WIDTH
+# define CHAR_BIT FB_ARCH_CHAR_WIDTH
 #endif
 
 #ifndef CHAR_WIDTH
 #define CHAR_WIDTH CHAR_BIT
+#endif
+
+#ifndef UCHAR_MAX
+#define UCHAR_MAX (~((~0u) << CHAR_BIT))
+#endif
+
+#ifndef SCHAR_MAX
+#define SCHAR_MAX (~((~0) << (CHAR_BIT-1)))
+#endif
+
+#ifndef SCHAR_MIN
+#define SCHAR_MIN ((-SCHAR_MAX)-1)
+#endif
+
+#ifndef CHAR_SIGNED
+# if defined( __CHAR_UNSIGNED__ )
+# elif defined( __CHAR_SIGNED__ )
+#  define CHAR_SIGNED
+# elif ('\0'|(1 << (CHAR_BIT-1))) < 0
+#  define CHAR_SIGNED
+# endif
+#endif
+
+#ifndef CHAR_UNSIGNED
+# ifndef CHAR_SIGNED
+#  define CHAR_UNSIGNED
+# endif
+#endif
+
+#ifndef CHAR_MAX
+# ifdef CHAR_SIGNED
+#  define CHAR_MAX SCHAR_MAX
+# else
+#  define CHAR_MAX UCHAR_MAX
+# endif
+#endif
+
+#ifndef CHAR_MIN
+# ifdef CHAR_SIGNED
+#  define CHAR_MIN SCHAR_MIN
+# else
+#  define CHAR_MIN 0u
+# endif
 #endif
 
 #ifndef NEGATE
@@ -71,7 +118,7 @@
 	(((PRV) >= CCINT_MAX) ? PRV : ((PRV) * ((PRV) + (PRV) + 4)) + 1)
 
 #ifndef UMAX_FOR_1BYTE
-#define UMAX_FOR_1BYTE ~((~0u) << CHAR_BIT)
+#define UMAX_FOR_1BYTE UCHAR_MAX
 #endif
 
 #ifndef MAX_FOR_1BYTE
