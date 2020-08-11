@@ -97,7 +97,7 @@ typedef ulong_t size_t;
 #endif /* __size_t_defined */
 
 #ifndef SIZEOF_SIZE_T
-# define SIZEOF_SIZE_T SIZEOF(SIZE_MAX)
+# define SIZEOF_SIZE_T SIZEOF_BY_UMAX(SIZE_MAX)
 #endif
 
 #ifndef SIZE_T_WIDTH
@@ -165,7 +165,7 @@ typedef long_t ptrdiff_t;
 
 
 #ifndef SIZEOF_PTRDIFF_T
-# define SIZEOF_PTRDIFF_T SIZEOF(PTRDIFF_MAX)
+# define SIZEOF_PTRDIFF_T SIZEOF_BY_IMAX(PTRDIFF_MAX)
 #endif
 
 #ifndef PTRDIFF_T_WIDTH
@@ -233,7 +233,7 @@ typedef long_t intptr_t;
 
 
 #ifndef SIZEOF_INTPTR_T
-# define SIZEOF_INTPTR_T SIZEOF(INTPTR_MAX)
+# define SIZEOF_INTPTR_T SIZEOF_BY_IMAX(INTPTR_MAX)
 #endif
 
 #ifndef INTPTR_T_WIDTH
@@ -297,7 +297,7 @@ typedef ulong_t uintptr_t;
 
 
 #ifndef SIZEOF_UINTPTR_T
-# define SIZEOF_UINTPTR_T SIZEOF(UINTPTR_MAX)
+# define SIZEOF_UINTPTR_T SIZEOF_BY_UMAX(UINTPTR_MAX)
 #endif
 
 #ifndef UINTPTR_T_WIDTH
@@ -365,7 +365,7 @@ typedef long_t intmax_t;
 
 
 #ifndef SIZEOF_INTMAX_T
-# define SIZEOF_INTMAX_T SIZEOF(INTMAX_MAX)
+# define SIZEOF_INTMAX_T SIZEOF_BY_IMAX(INTMAX_MAX)
 #endif
 
 #ifndef INTMAX_T_WIDTH
@@ -429,7 +429,7 @@ typedef ulong_t uintmax_t;
 
 
 #ifndef SIZEOF_UINTMAX_T
-# define SIZEOF_UINTMAX_T SIZEOF(UINTMAX_MAX)
+# define SIZEOF_UINTMAX_T SIZEOF_BY_UMAX(UINTMAX_MAX)
 #endif
 
 #ifndef UINTMAX_T_WIDTH
@@ -494,7 +494,7 @@ typedef int_t int8_t;
 #ifdef __int8_t_defined
 
 #ifndef SIZEOF_INT8_T
-# define SIZEOF_INT8_T SIZEOF(INT8_MAX)
+# define SIZEOF_INT8_T SIZEOF_BY_IMAX(INT8_MAX)
 #endif
 
 #ifndef INT8_T_WIDTH
@@ -546,7 +546,7 @@ typedef uint_t uint8_t;
 #ifdef __uint8_t_defined
 
 #ifndef SIZEOF_UINT8_T
-# define SIZEOF_UINT8_T SIZEOF(UINT8_MAX)
+# define SIZEOF_UINT8_T SIZEOF_BY_UMAX(UINT8_MAX)
 #endif
 
 #ifndef UINT8_T_WIDTH
@@ -599,7 +599,7 @@ typedef int_t int_fast8_t;
 #ifdef __int_fast8_t_defined
 
 #ifndef SIZEOF_INT_FAST8_T
-# define SIZEOF_INT_FAST8_T SIZEOF(INT_FAST8_MAX)
+# define SIZEOF_INT_FAST8_T SIZEOF_BY_IMAX(INT_FAST8_MAX)
 #endif
 
 #ifndef INT_FAST8_T_WIDTH
@@ -652,7 +652,7 @@ typedef uint_t uint_fast8_t;
 #ifdef __uint_fast8_t_defined
 
 #ifndef SIZEOF_UINT_FAST8_T
-# define SIZEOF_UINT_FAST8_T SIZEOF(UINT_FAST8_MAX)
+# define SIZEOF_UINT_FAST8_T SIZEOF_BY_UMAX(UINT_FAST8_MAX)
 #endif
 
 #ifndef UINT_FAST8_T_WIDTH
@@ -705,7 +705,7 @@ typedef int_t int_least8_t;
 #ifdef __int_least8_t_defined
 
 #ifndef SIZEOF_INT_LEAST8_T
-# define SIZEOF_INT_LEAST8_T SIZEOF(INT_LEAST8_MAX)
+# define SIZEOF_INT_LEAST8_T SIZEOF_BY_IMAX(INT_LEAST8_MAX)
 #endif
 
 #ifndef INT_LEAST8_T_WIDTH
@@ -758,7 +758,7 @@ typedef uint_t uint_least8_t;
 #ifdef __uint_least8_t_defined
 
 #ifndef SIZEOF_UINT_LEAST8_T
-# define SIZEOF_UINT_LEAST8_T SIZEOF(UINT_LEAST8_MAX)
+# define SIZEOF_UINT_LEAST8_T SIZEOF_BY_UMAX(UINT_LEAST8_MAX)
 #endif
 
 #ifndef UINT_LEAST8_T_WIDTH
