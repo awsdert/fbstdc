@@ -148,16 +148,16 @@ typedef ulong_t size_t;
 # undef PTRDIFF_END_BIT
 # undef PRI_PTRDIFF_T
 # undef SCN_PTRDIFF_T
-# ifndef LONG_MAX
-typedef uint_t ptrdiff_t;
+# if !defined( LONG_MAX )
+typedef int_t ptrdiff_t;
 #  define PTRDIFF_MAX INT_MAX
 #  define PTRDIFF_MIN INT_MIN
 # elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
-typedef ullong_t ptrdiff_t;
+typedef llong_t ptrdiff_t;
 #  define PTRDIFF_MAX LLONG_MAX
 #  define PTRDIFF_MIN LLONG_MIN
 # else
-typedef ulong_t ptrdiff_t;
+typedef long_t ptrdiff_t;
 #  define PTRDIFF_MAX LONG_MAX
 #  define PTRDIFF_MIN LONG_MIN
 # endif
