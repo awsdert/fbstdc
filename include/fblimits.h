@@ -38,15 +38,19 @@
 #ifndef CHAR_SIGNED
 # if defined( __CHAR_UNSIGNED__ )
 # elif defined( __CHAR_SIGNED__ )
-#  define CHAR_SIGNED
-# elif ('\0'|(1 << (CHAR_BIT-1))) < 0
-#  define CHAR_SIGNED
+#  define CHAR_SIGNED 1
+# elif (char)-1 < 0
+#  define CHAR_SIGNED 1
+# else
+#  define CHAR_SIGNED 0
 # endif
 #endif
 
 #ifndef CHAR_UNSIGNED
-# ifndef CHAR_SIGNED
-#  define CHAR_UNSIGNED
+# if CHAR_SIGNED
+#  define CHAR_UNSIGNED 0
+# else
+#  define CHAR_UNSIGNED 1
 # endif
 #endif
 
