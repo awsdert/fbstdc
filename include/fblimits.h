@@ -19,6 +19,10 @@
 # define CHAR_BIT FB_ARCH_CHAR_WIDTH
 #endif
 
+#ifndef bitsof
+#define bitsof(T) (CHAR_BIT * sizeof(T))
+#endif
+
 #ifndef CHAR_WIDTH
 #define CHAR_WIDTH CHAR_BIT
 #endif
@@ -37,6 +41,7 @@
 
 #ifndef CHAR_SIGNED
 # if defined( __CHAR_UNSIGNED__ )
+#  define CHAR_SIGNED 0
 # elif defined( __CHAR_SIGNED__ )
 #  define CHAR_SIGNED 1
 # elif (char)-1 < 0
