@@ -94,42 +94,89 @@ typedef long long unsigned int ullong_t;
 # define UNIC_SSIZE_MAX UNIC_LONG_MAX
 #endif
 
+#ifndef SSIZE_MAX
+# ifdef UNIC_FALLBACK
+#  define SSIZE_MAX UNIC_SSIZE_MAX
+# endif
+#endif
+
 #ifdef SSIZE_MIN
 # define UNIC_SSIZE_MIN SSIZE_MIN
 #else
 # define UNIC_SSIZE_MIN UNIC___MIN(UNIC_SSIZE_MAX)
+# ifdef UNIC_FALLBACK
+#  define SSIZE_MIN UNIC_SSIZE_MIN
+# endif
 #endif
 
 #ifdef SIZE_MAX
 # define UNIC_SIZE_MAX SIZE_MAX
 #else
-# define UNIC_SIZE_MAX UNIC___MAX(UNIC_SIZE_MAX)
+# define UNIC_SIZE_MAX UNIC___MAX(UNIC_SSIZE_MAX)
+# ifdef UNIC_FALLBACK
+#  define SIZE_MAX UNIC_SIZE_MAX
+# endif
+#endif
+
+#ifdef SIZE_END_BIT
+# define UNIC_SIZE_END_BIT SIZE_END_BIT
+#else
+# define UNIC_SIZE_END_BIT (~(SIZE_MAX>>1))
+# ifdef UNIC_FALLBACK
+#  define SIZE_END_BIT UNIC_SIZE_END_BIT
+# endif
+#endif
+
+#ifdef SIZEOF_SIZE_T
+# define UNIC_SIZEOF_SIZE_T SIZEOF_SIZE_T
+#else
+# define UNIC_SIZEOF_SIZE_T SIZEOF_BY_UMAX(SIZE_MAX)
+# ifdef UNIC_FALLBACK
+#  define SIZEOF_SIZE_T UNIC_SIZEOF_SIZE_T
+# endif
+#endif
+
+#ifdef SIZE_T_WIDTH
+# define UNIC_SIZE_T_WIDTH SIZE_T_WIDTH
+#else
+# define UNIC_SIZE_T_WIDTH (UNIC_SIZEOF_SIZE_T * UNIC_CHAR_BIT)
+# ifdef UNIC_FALLBACK
+#  define SIZE_T_WIDTH UNIC_SIZE_T_WIDTH
+# endif
+#endif
+
+#ifdef __ssize_t_defined
+typedef ssize_t unic_ssize_t;
+#elif UNIC_SSIZE_MAX == UNIC_INT_MAX
+typedef int_t unic_ssize_t;
+#elif UNIC_SSIZE_MAX > UNIC_LONG_MAX
+typedef llong_t unic_ssize_t;
+#else
+typedef long_t unic_ssize_t;
+#endif
+
+#ifndef __ssize_t_defined
+# ifdef UNIC_FALLBACK
+#  define __ssize_t_defined
+typedef unic_ssize_t ssize_t;
+# endif
+#endif
+
+#ifdef __size_t_defined
+typedef size_t unic_size_t;
+#elif UNIC_SIZE_MAX == UNIC_UINT_MAX
+typedef uint_t unic_size_t;
+#elif UNIC_SIZE_MAX > UNIC_ULONG_MAX
+typedef ullong_t unic_size_t;
+#else
+typedef ulong_t unic_size_t;
 #endif
 
 #ifndef __size_t_defined
-# define __size_t_defined
-# ifdef SIZE_MAX == UNIC_UINT_MAX
-typedef uint_t size_t;
-#  define SIZE_MAX UINT_MAX
-# elif SIZE_MAX > UNIC_ULONG_MAX
-typedef ullong_t size_t;
-#  define SIZE_MAX ULLONG_MAX
-# else
-typedef ulong_t size_t;
-#  define SIZE_MAX ULONG_MAX
+# ifdef UNIC_FALLBACK
+#  define __size_t_defined
+typedef unic_size_t size_t;
 # endif
-#endif /* __size_t_defined */
-
-#ifndef SIZEOF_SIZE_T
-# define SIZEOF_SIZE_T SIZEOF_BY_UMAX(SIZE_MAX)
-#endif
-
-#ifndef SIZE_T_WIDTH
-# define SIZE_T_WIDTH (SIZEOF_SIZE_T * CHAR_BIT)
-#endif
-
-#ifndef SIZE_END_BIT
-# define SIZE_END_BIT ~(SIZE_MAX>>1)
 #endif
 
 #ifndef SIZE_T_C
