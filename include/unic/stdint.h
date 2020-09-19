@@ -1,7 +1,7 @@
 #ifndef FBSTDINT_H
 # define FBSTDINT_H
 
-#include "fblimits.h"
+#include "limits.h"
 
 #ifndef NO_STDC
 #ifdef __cplusplus
@@ -15,6 +15,17 @@
 #include <stdint.h>
 #include <inttypes.h>
 #endif
+#endif
+
+/* Common typedefs that SHOULD be in standard C but aren't */
+
+#ifndef __bool_defined
+# define __bool_defined
+# ifndef __cplusplus
+typedef _Bool bool;
+#  define false 0
+#  define true !false
+# endif
 #endif
 
 #ifndef __int_t_defined
@@ -42,52 +53,65 @@ typedef unsigned char uchar_t;
 #ifdef SHRT_MAX
 # ifndef __short_t_defined
 #  define __short_t_defined
-typedef signed short int short_t;
+typedef short signed int short_t;
 # endif
 
 # ifndef __ushort_t_defined
 #  define __ushort_t_defined
-typedef unsigned short int ushort_t;
+typedef short unsigned int ushort_t;
 # endif
 #endif /* SHRT_MAX*/
 
 #ifdef LONG_MAX
 # ifndef __long_t_defined
 #  define __long_t_defined
-typedef signed long int long_t;
+typedef long signed int long_t;
 # endif
 
 # ifndef __ulong_t_defined
 #  define __ulong_t_defined
-typedef unsigned long int ulong_t;
+typedef long unsigned int ulong_t;
 # endif
 #endif /* LONG_MAX*/
 
 #ifdef LLONG_MAX
 # ifndef __llong_t_defined
 #  define __llong_t_defined
-typedef signed long long int llong_t;
+typedef long long signed int llong_t;
 # endif
 
 # ifndef __ullong_t_defined
 #  define __ullong_t_defined
-typedef unsigned long long int ullong_t;
+typedef long long unsigned int ullong_t;
 # endif
 #endif /* LLONG_MAX*/
 
+#ifdef SSIZE_MAX
+# define UNIC_SSIZE_MAX SSIZE_MAX
+#elif defined(UNIC_LLONG_MAX) && UNIC_LLONG_MAX > UNIC_LONG_MAX
+# define UNIC_SSIZE_MAX UNIC_LLONG_MAX
+#else
+# define UNIC_SSIZE_MAX UNIC_LONG_MAX
+#endif
+
+#ifdef SSIZE_MIN
+# define UNIC_SSIZE_MIN SSIZE_MIN
+#else
+# define UNIC_SSIZE_MIN UNIC___MIN(UNIC_SSIZE_MAX)
+#endif
+
+#ifdef SIZE_MAX
+# define UNIC_SIZE_MAX SIZE_MAX
+#else
+# define UNIC_SIZE_MAX UNIC___MAX(UNIC_SIZE_MAX)
+#endif
+
 #ifndef __size_t_defined
 # define __size_t_defined
-# undef SIZE_MAX
-# undef SIZE_T_C
-# undef SIZE_T_WIDTH
-# undef SIZEOF_SIZE_T
-# undef SIZE_END_BIT
-# undef PRI_SIZE_T
-# undef SCN_SIZE_T
-# ifndef LONG_MAX
-typedef uint_t;
+# ifdef SIZE_MAX == UNIC_UINT_MAX
+typedef uint_t size_t;
 #  define SIZE_MAX UINT_MAX
-# elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
+# elif SIZE_MAX > UNIC_ULONG_MAX
 typedef ullong_t size_t;
 #  define SIZE_MAX ULLONG_MAX
 # else
