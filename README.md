@@ -1,8 +1,12 @@
 # unic
-Standard macros and functions prepended with unic_ (Work in progress).
+Standard macros and functions prepended with unic_ (Work in progress). I
+pronounce unic as unique, please avoid confusion by doing likewise.
 
 # About
 Originally named fbstdc (because I hadn't thought of a good name yet).
+UniC stands for Universal C, as it's name implies aims to use universal C
+where ever possible, in practice this means as much as possible restricting code
+to C89 format & api, system level stuff will just get a wrapper.
 
 ## Original Info
 I often run into differences in various standard headers and am tired of re-wrapping around them,

@@ -155,10 +155,56 @@ typedef llong_t unic_ssize_t;
 typedef long_t unic_ssize_t;
 #endif
 
+#if UNIC_SSIZE_MAX == UNIC_INT_MAX
+# define UNIC_SSIZE_C(VAL) VAL
+# define UNIC_PRI_SSIZE
+# define UNIC_SCN_SSIZE
+#elif UNIC_SSIZE_MAX > UNIC_LONG_MAX
+# define UNIC_SSIZE_C(VAL) VAL#LL
+# define UNIC_PRI_SSIZE "ll"
+# define UNIC_SCN_SSIZE "ll"
+#else
+# define UNIC_SSIZE_C(VAL) VAL##L
+# define UNIC_PRI_SSIZE "l"
+# define UNIC_SCN_SSIZE "l"
+#endif
+
 #ifndef __ssize_t_defined
 # ifdef UNIC_FALLBACK
 #  define __ssize_t_defined
 typedef unic_ssize_t ssize_t;
+# endif
+#endif
+
+#define UNIC_PRIiSSIZE UNIC_PRI_SSIZE "i"
+#define UNIC_PRIoSSIZE UNIC_PRI_SSIZE "o"
+#define UNIC_PRIuSSIZE UNIC_PRI_SSIZE "u"
+#define UNIC_PRIxSSIZE UNIC_PRI_SSIZE "x"
+#define UNIC_PRIXSSIZE UNIC_PRI_SSIZE "X"
+
+#ifndef PRIxSSIZE
+# ifdef UNIC_FALLBACK
+#  define PRIiSSIZE UNIC_PRIiSSIZE
+#  define PRIoSSIZE UNIC_PRIoSSIZE
+#  define PRIuSSIZE UNIC_PRIuSSIZE
+#  define PRIxSSIZE UNIC_PRIxSSIZE
+#  define PRIXSSIZE UNIC_PRIXSSIZE
+# endif
+#endif
+
+#define UNIC_SCNiSSIZE UNIC_SCN_SSIZE "i"
+#define UNIC_SCNoSSIZE UNIC_SCN_SSIZE "o"
+#define UNIC_SCNuSSIZE UNIC_SCN_SSIZE "u"
+#define UNIC_SCNxSSIZE UNIC_SCN_SSIZE "x"
+#define UNIC_SCNXSSIZE UNIC_SCN_SSIZE "X"
+
+#ifndef SCNxSSIZE
+# ifdef UNIC_FALLBACK
+#  define SCNiSSIZE UNIC_SCNiSSIZE
+#  define SCNoSSIZE UNIC_SCNoSSIZE
+#  define SCNuSSIZE UNIC_SCNuSSIZE
+#  define SCNxSSIZE UNIC_SCNxSSIZE
+#  define SCNXSSIZE UNIC_SCNXSSIZE
 # endif
 #endif
 
@@ -172,6 +218,20 @@ typedef ullong_t unic_size_t;
 typedef ulong_t unic_size_t;
 #endif
 
+#if UNIC_SIZE_MAX == UNIC_UINT_MAX
+# define UNIC_SIZE_C(VAL) VAL##U
+# define UNIC_PRI_SIZE
+# define UNIC_SCN_SIZE
+#elif UNIC_SIZE_MAX > UNIC_ULONG_MAX
+# define UNIC_SIZE_C(VAL) VAL##ULL
+# define UNIC_PRI_SIZE "ll"
+# define UNIC_SCN_SIZE "ll"
+#else
+# define UNIC_SIZE_C(VAL) VAL##UL
+# define UNIC_PRI_SIZE "l"
+# define UNIC_SCN_SIZE "l"
+#endif
+
 #ifndef __size_t_defined
 # ifdef UNIC_FALLBACK
 #  define __size_t_defined
@@ -179,169 +239,261 @@ typedef unic_size_t size_t;
 # endif
 #endif
 
-#ifndef SIZE_T_C
-# ifndef LONG_MAX
-#  define SIZE_T_C(VAL) VAL##U
-# elif SIZE_MAX > ULONG_MAX
-#  define SIZE_T_C(VAL) VAL##LLU
-# else
-#  define SIZE_T_C(VAL) VAL##LU
+#define UNIC_PRIiSIZE UNIC_PRI_SIZE "i"
+#define UNIC_PRIoSIZE UNIC_PRI_SIZE "o"
+#define UNIC_PRIuSIZE UNIC_PRI_SIZE "u"
+#define UNIC_PRIxSIZE UNIC_PRI_SIZE "x"
+#define UNIC_PRIXSIZE UNIC_PRI_SIZE "X"
+
+#ifndef PRIxSIZE
+# ifdef UNIC_FALLBACK
+#  define PRIiSIZE UNIC_PRIiSIZE
+#  define PRIoSIZE UNIC_PRIoSIZE
+#  define PRIuSIZE UNIC_PRIuSIZE
+#  define PRIxSIZE UNIC_PRIxSIZE
+#  define PRIXSIZE UNIC_PRIXSIZE
 # endif
 #endif
 
-#ifndef PRI_SIZE_T
-# ifndef LONG_MAX
-#  define PRI_SIZE_T
-# elif SIZE_MAX > ULONG_MAX
-#  define PRI_SIZE_T "ll"
-# else
-#  define PRI_SIZE_T "l"
+#define UNIC_SCNiSIZE UNIC_SCN_SIZE "i"
+#define UNIC_SCNoSIZE UNIC_SCN_SIZE "o"
+#define UNIC_SCNuSIZE UNIC_SCN_SIZE "u"
+#define UNIC_SCNxSIZE UNIC_SCN_SIZE "x"
+#define UNIC_SCNXSIZE UNIC_SCN_SIZE "X"
+
+#ifndef SCNxSIZE
+# ifdef UNIC_FALLBACK
+#  define SCNiSIZE UNIC_SCNiSIZE
+#  define SCNoSIZE UNIC_SCNoSIZE
+#  define SCNuSIZE UNIC_SCNuSIZE
+#  define SCNxSIZE UNIC_SCNxSIZE
+#  define SCNXSIZE UNIC_SCNXSIZE
 # endif
 #endif
 
-#ifndef SCN_SIZE_T
-# ifndef LONG_MAX
-#  defined SCN_SIZE_T
-# elif SIZE_MAX > ULONG_MAX
-#  define SCN_SIZE_T "ll"
-# else
-#  define SCN_SIZE_T "l"
+#ifdef PTRDIFF_MAX
+# define UNIC_PTRDIFF_MAX PTRDIFF_MAX
+#elif defined(UNIC_LLONG_MAX) && UNIC_LLONG_MAX > UNIC_LONG_MAX
+# define UNIC_PTRDIFF_MAX UNIC_LLONG_MAX
+#else
+# define UNIC_PTRDIFF_MAX UNIC_LONG_MAX
+#endif
+
+#ifndef PTRDIFF_MAX
+# ifdef UNIC_FALLBACK
+#  define PTRDIFF_MAX UNIC_PTRDIFF_MAX
 # endif
+#endif
+
+#ifdef PTRDIFF_MIN
+# define UNIC_PTRDIFF_MIN PTRDIFF_MIN
+#else
+# define UNIC_PTRDIFF_MIN UNIC___MIN(UNIC_PTRDIFF_MAX)
+# ifdef UNIC_FALLBACK
+#  define PTRDIFF_MIN UNIC_PTRDIFF_MIN
+# endif
+#endif
+
+#ifdef SIZEOF_PTRDIFF_T
+# define UNIC_SIZEOF_PTRDIFF_T SIZEOF_PTRDIFF_T
+#else
+# define UNIC_SIZEOF_PTRDIFF_T SIZEOF_BY_IMAX(PTRDIFF_MAX)
+# ifdef UNIC_FALLBACK
+#  define SIZEOF_PTRDIFF_T UNIC_SIZEOF_PTRDIFF_T
+# endif
+#endif
+
+#ifdef PTRDIFF_T_WIDTH
+# define UNIC_PTRDIFF_T_WIDTH PTRDIFF_T_WIDTH
+#else
+# define UNIC_PTRDIFF_T_WIDTH (UNIC_SIZEOF_PTRDIFF_T * UNIC_CHAR_BIT)
+# ifdef UNIC_FALLBACK
+#  define PTRDIFF_T_WIDTH UNIC_PTRDIFF_T_WIDTH
+# endif
+#endif
+
+#ifdef PTRDIFF_END_BIT
+# define UNIC_PTRDIFF_END_BIT
+#else
+# define UNIC_PTRDIFF_END_BIT (~PTRDIFF_MAX)
+# ifdef UNIC_FALLBACK
+#  define PTRDIFF_END_BIT UNIC_PTRDIFF_END_BIT
+# endif
+#endif
+
+#ifdef __ptrdiff_t_defined
+typedef ptrdiff_t unic_ptrdiff_t;
+#elif UNIC_PTRDIFF_MAX == UNIC_INT_MAX
+typedef int_t ptrdiff_t;
+#elif UNIC_PTRDIFF_MAX > LONG_MAX
+typedef llong_t ptrdiff_t;
+#else
+typedef long_t ptrdiff_t;
 #endif
 
 #ifndef __ptrdiff_t_defined
-# define __ptrdiff_t_defined
-# undef PTRDIFF_MAX
-# undef PTRDIFF_MIN
-# undef PTRDIFF_T_C
-# undef PTRDIFF_T_WIDTH
-# undef SIZEOF_PTRDIFF_T
-# undef PTRDIFF_END_BIT
-# undef PRI_PTRDIFF_T
-# undef SCN_PTRDIFF_T
-# if !defined( LONG_MAX )
-typedef int_t ptrdiff_t;
-#  define PTRDIFF_MAX INT_MAX
-#  define PTRDIFF_MIN INT_MIN
-# elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
-typedef llong_t ptrdiff_t;
-#  define PTRDIFF_MAX LLONG_MAX
-#  define PTRDIFF_MIN LLONG_MIN
-# else
-typedef long_t ptrdiff_t;
-#  define PTRDIFF_MAX LONG_MAX
-#  define PTRDIFF_MIN LONG_MIN
-# endif
-#endif /* __ptrdiff_t_defined */
-
-
-#ifndef SIZEOF_PTRDIFF_T
-# define SIZEOF_PTRDIFF_T SIZEOF_BY_IMAX(PTRDIFF_MAX)
-#endif
-
-#ifndef PTRDIFF_T_WIDTH
-# define PTRDIFF_T_WIDTH (SIZEOF_PTRDIFF_T * CHAR_BIT)
-#endif
-
-#ifndef PTRDIFF_END_BIT
-# define PTRDIFF_END_BIT ~(PTRDIFF_MAX>>1)
-#endif
-
-#ifndef PTRDIFF_T_C
-# ifndef LONG_MAX
-#  define PTRDIFF_T_C(VAL) VAL
-# elif PTRDIFF_MAX > LONG_MAX
-#  define PTRDIFF_T_C(VAL) VAL##LL
-# else
-#  define PTRDIFF_T_C(VAL) VAL##L
+# ifdef UNIC_FALLBACK
+#  define __ptrdiff_t_defined
+typedef unic_ptrdiff_t ptrdiff_t;
 # endif
 #endif
 
-#ifndef PRI_PTRDIFF_T
-# ifndef LONG_MAX
-#  define PRI_PTRDIFF_T
-# elif PTRDIFF_MAX > LONG_MAX
-#  define PRI_PTRDIFF_T "ll"
-# else
-#  define PRI_PTRDIFF_T "l"
+#if UNIC_PTRDIFF_MAX == UNIC_INT_MAX
+# define UNIC_PTRDIFF_C(VAL) VAL
+# define UNIC_PRI_PTRDIFF
+# define UNIC_SCN_PTRDIFF
+#elif UNIC_PTRDIFF_MAX > LONG_MAX
+# define UNIC_PTRDIFF_C(VAL) VAL##LL
+# define UNIC_PRI_PTRDIFF "ll"
+# define UNIC_SCN_PTRDIFF "ll"
+#else
+# define UNIC_PTRDIFF_C(VAL) VAL##L
+# define UNIC_PRI_PTRDIFF "l"
+# define UNIC_SCN_PTRDIFF "l"
+#endif
+
+#define UNIC_PRIiPTRDIFF UNIC_PRI_PTRDIFF "i"
+#define UNIC_PRIoPTRDIFF UNIC_PRI_PTRDIFF "o"
+#define UNIC_PRIuPTRDIFF UNIC_PRI_PTRDIFF "u"
+#define UNIC_PRIxPTRDIFF UNIC_PRI_PTRDIFF "x"
+#define UNIC_PRIXPTRDIFF UNIC_PRI_PTRDIFF "X"
+
+#ifndef PRIxPTRDIFF
+# ifdef UNIC_FALLBACK
+#  define PRIiPTRDIFF UNIC_PRIiPTRDIFF
+#  define PRIoPTRDIFF UNIC_PRIoPTRDIFF
+#  define PRIuPTRDIFF UNIC_PRIuPTRDIFF
+#  define PRIxPTRDIFF UNIC_PRIxPTRDIFF
+#  define PRIXPTRDIFF UNIC_PRIXPTRDIFF
 # endif
 #endif
 
-#ifndef SCN_PTRDIFF_T
-# ifndef LONG_MAX
-#  define SCN_PTRDIFF_T
-# elif PTRDIFF_MAX > LONG_MAX
-#  define SCN_PTRDIFF_T "ll"
-# else
-#  define SCN_PTRDIFF_T "l"
+#define UNIC_SCNiPTRDIFF UNIC_SCN_PTRDIFF "i"
+#define UNIC_SCNoPTRDIFF UNIC_SCN_PTRDIFF "o"
+#define UNIC_SCNuPTRDIFF UNIC_SCN_PTRDIFF "u"
+#define UNIC_SCNxPTRDIFF UNIC_SCN_PTRDIFF "x"
+#define UNIC_SCNXPTRDIFF UNIC_SCN_PTRDIFF "X"
+
+#ifndef SCNxPTRDIFF
+# ifdef UNIC_FALLBACK
+#  define SCNiPTRDIFF UNIC_SCNiPTRDIFF
+#  define SCNoPTRDIFF UNIC_SCNoPTRDIFF
+#  define SCNuPTRDIFF UNIC_SCNuPTRDIFF
+#  define SCNxPTRDIFF UNIC_SCNxPTRDIFF
+#  define SCNXPTRDIFF UNIC_SCNXPTRDIFF
 # endif
+#endif
+
+#ifdef INTPTR_MAX
+# define UNIC_INTPTR_MAX INTPTR_MAX
+#elif defined(UNIC_LLONG_MAX) && UNIC_LLONG_MAX > UNIC_LONG_MAX
+# define UNIC_INTPTR_MAX UNIC_LLONG_MAX
+#else
+# define UNIC_INTPTR_MAX UNIC_LONG_MAX
+#endif
+
+#ifndef INTPTR_MAX
+# ifdef UNIC_FALLBACK
+#  define INTPTR_MAX UNIC_INTPTR_MAX
+# endif
+#endif
+
+#ifdef INTPTR_MIN
+# define UNIC_INTPTR_MIN INTPTR_MIN
+#else
+# define UNIC_INTPTR_MIN UNIC___MIN(UNIC_INTPTR_MAX)
+# ifdef UNIC_FALLBACK
+#  define INTPTR_MIN UNIC_INTPTR_MIN
+# endif
+#endif
+
+#ifdef SIZEOF_INTPTR_T
+# define UNIC_SIZEOF_INTPTR_T SIZEOF_INTPTR_T
+#else
+# define UNIC_SIZEOF_INTPTR_T SIZEOF_BY_IMAX(INTPTR_MAX)
+# ifdef UNIC_FALLBACK
+#  define SIZEOF_INTPTR_T UNIC_SIZEOF_INTPTR_T
+# endif
+#endif
+
+#ifdef INTPTR_T_WIDTH
+# define UNIC_INTPTR_T_WIDTH INTPTR_T_WIDTH
+#else
+# define UNIC_INTPTR_T_WIDTH (UNIC_SIZEOF_INTPTR_T * UNIC_CHAR_BIT)
+# ifdef UNIC_FALLBACK
+#  define INTPTR_T_WIDTH UNIC_INTPTR_T_WIDTH
+# endif
+#endif
+
+#ifdef INTPTR_END_BIT
+# define UNIC_INTPTR_END_BIT
+#else
+# define UNIC_INTPTR_END_BIT (~INTPTR_MAX)
+# ifdef UNIC_FALLBACK
+#  define INTPTR_END_BIT UNIC_INTPTR_END_BIT
+# endif
+#endif
+
+#ifdef __intptr_t_defined
+typedef intptr_t unic_intptr_t;
+#elif UNIC_INTPTR_MAX == UNIC_INT_MAX
+typedef int_t intptr_t;
+#elif UNIC_INTPTR_MAX > LONG_MAX
+typedef llong_t intptr_t;
+#else
+typedef long_t intptr_t;
 #endif
 
 #ifndef __intptr_t_defined
-# define __intptr_t_defined
-# undef INTPTR_MAX
-# undef INTPTR_MIN
-# undef INTPTR_T_C
-# undef INTPTR_T_WIDTH
-# undef SIZEOF_INTPTR_T
-# undef INTPTR_END_BIT
-# undef PRI_INTPTR_T
-# undef SCN_INTPTR_T
-# ifndef LONG_MAX
-typedef int_t intptr_t;
-#  define INTPTR_MAX INT_MAX
-#  define INTPTR_MIN INT_MIN
-# elif defined( LLONG_MAX ) && LLONG_MAX > LONG_MAX
-typedef llong_t intptr_t;
-#  define INTPTR_MAX LLONG_MAX
-#  define INTPTR_MIN LLONG_MIN
-# else
-typedef long_t intptr_t;
-#  define INTPTR_MAX LONG_MAX
-#  define INTPTR_MIN LONG_MIN
-# endif
-#endif /* __intptr_t_defined */
-
-
-#ifndef SIZEOF_INTPTR_T
-# define SIZEOF_INTPTR_T SIZEOF_BY_IMAX(INTPTR_MAX)
-#endif
-
-#ifndef INTPTR_T_WIDTH
-# define INTPTR_T_WIDTH (SIZEOF_INTPTR_T * CHAR_BIT)
-#endif
-
-#ifndef INTPTR_END_BIT
-# define INTPTR_END_BIT ~(INTPTR_MAX>>1)
-#endif
-
-#ifndef INTPTR_T_C
-# ifndef LONG_MAX
-#  define INTPTR_T_C(VAL) VAL
-# elif INTPTR_MAX > LONG_MAX
-#  define INTPTR_T_C(VAL) VAL##LL
-# else
-#  define INTPTR_T_C(VAL) VAL##L
+# ifdef UNIC_FALLBACK
+#  define __intptr_t_defined
+typedef unic_intptr_t intptr_t;
 # endif
 #endif
 
-#ifndef PRI_INTPTR_T
-# ifndef LONG_MAX
-#  define PRI_INTPTR_T
-# elif INTPTR_MAX > LONG_MAX
-#  define PRI_INTPTR_T "ll"
-# else
-#  define PRI_INTPTR_T "l"
+#if UNIC_INTPTR_MAX == UNIC_INT_MAX
+# define UNIC_INTPTR_C(VAL) VAL
+# define UNIC_PRI_INTPTR
+# define UNIC_SCN_INTPTR
+#elif UNIC_INTPTR_MAX > LONG_MAX
+# define UNIC_INTPTR_C(VAL) VAL##LL
+# define UNIC_PRI_INTPTR "ll"
+# define UNIC_SCN_INTPTR "ll"
+#else
+# define UNIC_INTPTR_C(VAL) VAL##L
+# define UNIC_PRI_INTPTR "l"
+# define UNIC_SCN_INTPTR "l"
+#endif
+
+#define UNIC_PRIiINTPTR UNIC_PRI_INTPTR "i"
+#define UNIC_PRIoINTPTR UNIC_PRI_INTPTR "o"
+#define UNIC_PRIuINTPTR UNIC_PRI_INTPTR "u"
+#define UNIC_PRIxINTPTR UNIC_PRI_INTPTR "x"
+#define UNIC_PRIXINTPTR UNIC_PRI_INTPTR "X"
+
+#ifndef PRIxINTPTR
+# ifdef UNIC_FALLBACK
+#  define PRIiINTPTR UNIC_PRIiINTPTR
+#  define PRIoINTPTR UNIC_PRIoINTPTR
+#  define PRIuINTPTR UNIC_PRIuINTPTR
+#  define PRIxINTPTR UNIC_PRIxINTPTR
+#  define PRIXINTPTR UNIC_PRIXINTPTR
 # endif
 #endif
 
-#ifndef SCN_INTPTR_T
-# ifndef LONG_MAX
-#  define SCN_INTPTR_T
-# elif INTPTR_MAX > LONG_MAX
-#  define SCN_INTPTR_T "ll"
-# else
-#  define SCN_INTPTR_T "l"
+#define UNIC_SCNiINTPTR UNIC_SCN_INTPTR "i"
+#define UNIC_SCNoINTPTR UNIC_SCN_INTPTR "o"
+#define UNIC_SCNuINTPTR UNIC_SCN_INTPTR "u"
+#define UNIC_SCNxINTPTR UNIC_SCN_INTPTR "x"
+#define UNIC_SCNXINTPTR UNIC_SCN_INTPTR "X"
+
+#ifndef SCNxINTPTR
+# ifdef UNIC_FALLBACK
+#  define SCNiINTPTR UNIC_SCNiINTPTR
+#  define SCNoINTPTR UNIC_SCNoINTPTR
+#  define SCNuINTPTR UNIC_SCNuINTPTR
+#  define SCNxINTPTR UNIC_SCNxINTPTR
+#  define SCNXINTPTR UNIC_SCNXINTPTR
 # endif
 #endif
 
