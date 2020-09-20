@@ -1,4 +1,4 @@
-#if !defined( UNIC_INT_FAST16_C ) && UNIC_SHRT_WIDTH >= 16
+#if !defined( UNIC_INT_FAST16_C ) && UNIC_CAN_MAP_AT_LEAST_16BIT
 #include "_.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
@@ -36,7 +36,7 @@
 #ifdef INT_FAST16_TYPE
 # define UNIC_INT_FAST16_TYPE INT_FAST16_TYPE
 #else
-# define UNIC_INT_FAST16_TYPE signed char
+# define UNIC_INT_FAST16_TYPE signed short int
 #endif
 
 typedef UNIC_INT_FAST16_TYPE unic_int_fast16_t;

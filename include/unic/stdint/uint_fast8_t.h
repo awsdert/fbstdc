@@ -1,4 +1,4 @@
-#if !defined( UNIC_UINT_FAST8_C ) && UNIC_CHAR_BIT >= 8
+#if !defined( UNIC_UINT_FAST8_C ) && UNIC_CAN_MAP_AT_LEAST_8BIT
 #include "_.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */

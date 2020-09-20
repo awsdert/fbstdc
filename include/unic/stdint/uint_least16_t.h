@@ -1,4 +1,4 @@
-#if !defined( UNIC_UINT_LEAST16_C ) && UNIC_SHRT_WIDTH >= 16
+#if !defined( UNIC_UINT_LEAST16_C ) && UNIC_CAN_MAP_AT_LEAST_16BIT
 #include "_.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
@@ -6,7 +6,7 @@
 #ifdef UINT_LEAST16_MAX
 # define UNIC_UINT_LEAST16_MAX UINT_LEAST16_MAX
 #else
-# define UNIC_UINT_LEAST16_MAX UCHAR_MAX
+# define UNIC_UINT_LEAST16_MAX USHRT_MAX
 #endif
 
 #ifdef UINT_LEAST16_END_BIT

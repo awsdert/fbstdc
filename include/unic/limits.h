@@ -30,18 +30,12 @@
 # define UNIC_SIZEOF_CHAR SIZEOF_CHAR
 #else
 # define UNIC_SIZEOF_CHAR 1
-# ifdef UNIC_FALLBACK
-#  define SIZEOF_CHAR UNIC_SIZEOF_CHAR
-# endif
 #endif
 
 #ifdef CHAR_BIT
 # define UNIC_CHAR_BIT CHAR_BIT
 #else
 # define UNIC_CHAR_BIT UNIC_ARCH_CHAR_WIDTH
-# ifdef UNIC_FALLBACK
-#  define CHAR_BIT UNIC_CHAR_BIT
-# endif
 #endif
 
 /* Not specific to UNIC but still helpful */
@@ -76,36 +70,24 @@
 # define UNIC_CHAR_WIDTH CHAR_WIDTH
 #else
 # define UNIC_CHAR_WIDTH UNIC_CHAR_BIT
-# ifdef UNIC_FALLBACK
-#  define CHAR_WIDTH UNIC_CHAR_BIT
-# endif
 #endif
 
 #ifdef SCHAR_MAX
 # define UNIC_SCHAR_MAX SCHAR_MAX
 #else
 # define UNIC_SCHAR_MAX UNIC__IMAX(1)
-# ifdef UNIC_FALLBACK
-#  define SCHAR_MAX UNIC_SCHAR_MAX
-# endif
 #endif
 
 #ifdef SCHAR_MIN
 # define UNIC_SCHAR_MIN SCHAR_MIN
 #else
 # define UNIC_SCHAR_MIN UNIC___MIN(UNIC_SCHAR_MAX)
-# ifdef UNIC_FALLBACK
-#  define SCHAR_MIN UNIC_SCHAR_MIN
-# endif
 #endif
 
 #ifdef UCHAR_MAX
 # define UNIC_UCHAR_MAX UCHAR_MAX
 #else
 # define UNIC_UCHAR_MAX UNIC___MAX(UNIC_SCHAR_MAX)
-# ifdef UNIC_FALLBACK
-#  define UCHAR_MAX UNIC_UCHAR_MAX
-# endif
 #endif
 
 #ifdef CHAR_SIGNED
@@ -120,22 +102,12 @@
 # else
 #  define UNIC_CHAR_SIGNED 0
 # endif
-# ifdef UNIC_FALLBACK
-#  define CHAR_SIGNED UNIC_CHAR_SIGNED
-# endif
 #endif
 
 #ifdef CHAR_UNSIGNED
 # define UNIC_CHAR_UNSIGNED CHAR_UNSIGNED
 #else
-# if UNIC_CHAR_SIGNED
-#  define CHAR_UNSIGNED 0
-# else
-#  define CHAR_UNSIGNED 1
-# endif
-# ifdef UNIC_FALLBACK
-#  define CHAR_UNSIGNED UNIC_CHAR_UNSIGNED
-# endif
+# define UNIC_CHAR_UNSIGNED !UNIC_CHAR_SIGNED
 #endif
 
 #ifdef CHAR_MAX
@@ -146,9 +118,6 @@
 # else
 #  define UNIC_CHAR_MAX UNIC_UCHAR_MAX
 # endif
-# ifdef UNIC_FALLBACK
-#  define CHAR_MAX UNIC_CHAR_MAX
-# endif
 #endif
 
 #ifdef CHAR_MIN
@@ -158,9 +127,6 @@
 #  define UNIC_CHAR_MIN UNIC_SCHAR_MIN
 # else
 #  define UNIC_CHAR_MIN 0
-# endif
-# ifdef UNIC_FALLBACK
-#  define CHAR_MIN UNIC_CHAR_MIN
 # endif
 #endif
 
@@ -431,5 +397,49 @@
 #define UNIC_ULONG_LONG_MAX UNIC_ULLONG_MAX
 #define UNIC_SIZEOF_LONG_LONG UNIC_SIZEOF_LLONG
 #define UNIC_LONG_LONG_WIDTH UNIC_LLONG_WIDTH
+
+#ifdef UNIC_FALLBACK
+
+#ifndef CHAR_BIT
+#define CHAR_BIT UNIC_CHAR_BIT
+#endif
+
+#ifndef SCHAR_MAX
+#define SCHAR_MAX UNIC_SCHAR_MAX
+#endif
+
+#ifndef SCHAR_MIN
+#define SCHAR_MIN UNIC_SCHAR_MIN
+#endif
+
+#ifndef UCHAR_MAX
+#define UCHAR_MAX UNIC_UCHAR_MAX
+#endif
+
+#ifndef CHAR_SIGNED
+#define CHAR_SIGNED UNIC_CHAR_SIGNED
+#endif
+
+#ifndef CHAR_UNSIGNED
+#define CHAR_UNSIGNED UNIC_CHAR_UNSIGNED
+#endif
+
+#ifndef CHAR_MAX
+#define CHAR_MAX UNIC_CHAR_MAX
+#endif
+
+#ifndef CHAR_MIN
+#define CHAR_MIN UNIC_CHAR_MIN
+#endif
+
+#ifndef SIZEOF_CHAR
+#define SIZEOF_CHAR UNIC_SIZEOF_CHAR
+#endif
+
+#ifndef CHAR_WIDTH
+#define CHAR_WIDTH UNIC_CHAR_WIDTH
+#endif
+
+#endif
 
 #endif /* INC_UNIC_LIMITS_H */
