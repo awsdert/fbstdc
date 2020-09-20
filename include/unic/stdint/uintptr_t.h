@@ -1,5 +1,5 @@
 #ifndef UNIC_UINTPTR_C
-#include "ssize_t.h"
+#include "size_t.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
 
@@ -12,13 +12,13 @@
 #ifdef UINTPTR_END_BIT
 # define UNIC_UINTPTR_END_BIT UINTPTR_END_BIT
 #else
-# define UNIC_UINTPTR_END_BIT (~(SIZE_MAX>>1))
+# define UNIC_UINTPTR_END_BIT (~(UINTPTR_MAX>>1))
 #endif
 
 #ifdef SIZEOF_UINTPTR
 # define UNIC_SIZEOF_UINTPTR SIZEOF_UINTPTR
 #else
-# define UNIC_SIZEOF_UINTPTR UNIC_SIZEOF_SSIZE
+# define UNIC_SIZEOF_UINTPTR UNIC_SIZEOF_SIZE
 #endif
 
 #ifdef UINTPTR_WIDTH
@@ -108,20 +108,20 @@ typedef unic_uintptr_t uintptr_t;
 # define UINTPTR_C UNIC_UINTPTR_C
 #endif
 
-#ifndef PRIxSIZE
-# define PRIiUINTPTR UNIC_PRIiSIZE
-# define PRIoUINTPTR UNIC_PRIoSIZE
-# define PRIuUINTPTR UNIC_PRIuSIZE
-# define PRIxUINTPTR UNIC_PRIxSIZE
-# define PRIXUINTPTR UNIC_PRIXSIZE
+#ifndef PRIxUINTPTR
+# define PRIiUINTPTR UNIC_PRIiUINTPTR
+# define PRIoUINTPTR UNIC_PRIoUINTPTR
+# define PRIuUINTPTR UNIC_PRIuUINTPTR
+# define PRIxUINTPTR UNIC_PRIxUINTPTR
+# define PRIXUINTPTR UNIC_PRIXUINTPTR
 #endif
 
-#ifndef SCNxSIZE
-# define SCNiUINTPTR UNIC_SCNiSIZE
-# define SCNoUINTPTR UNIC_SCNoSIZE
-# define SCNuUINTPTR UNIC_SCNuSIZE
-# define SCNxUINTPTR UNIC_SCNxSIZE
-# define SCNXUINTPTR UNIC_SCNXSIZE
+#ifndef SCNxUINTPTR
+# define SCNiUINTPTR UNIC_SCNiUINTPTR
+# define SCNoUINTPTR UNIC_SCNoUINTPTR
+# define SCNuUINTPTR UNIC_SCNuUINTPTR
+# define SCNxUINTPTR UNIC_SCNxUINTPTR
+# define SCNXUINTPTR UNIC_SCNXUINTPTR
 #endif
 
 #endif /* UNIC_FALLBACK */
