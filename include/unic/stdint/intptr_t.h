@@ -1,0 +1,139 @@
+#ifndef UNIC_INTPTR_C
+#include "ssize_t.h"
+
+/* Since these macros can function as fallbacks check for originals 1st */
+
+#ifdef INTPTR_MAX
+# define UNIC_INTPTR_MAX INTPTR_MAX
+#else
+# define UNIC_INTPTR_MAX UNIC_SSIZE_MAX
+#endif
+
+#ifdef INTPTR_MIN
+# define UNIC_INTPTR_MIN INTPTR_MIN
+#else
+# define UNIC_INTPTR_MIN UNIC___MIN(UNIC_INTPTR_MAX)
+#endif
+
+#ifdef INTPTR_END_BIT
+# define UNIC_INTPTR_END_BIT INTPTR_END_BIT
+#else
+# define UNIC_INTPTR_END_BIT UNIC_INTPTR_MIN
+#endif
+
+#ifdef SIZEOF_SIZE
+# define UNIC_SIZEOF_INTPTR SIZEOF_INTPTR
+#else
+# define UNIC_SIZEOF_INTPTR SIZEOF_BY_IMAX(INTPTR_MAX)
+#endif
+
+#ifdef INTPTR_WIDTH
+# define UNIC_INTPTR_WIDTH INTPTR_WIDTH
+#else
+# define UNIC_INTPTR_WIDTH (UNIC_SIZEOF_INTPTR * UNIC_CHAR_BIT)
+#endif
+
+#ifdef INTPTR_TYPE
+# define UNIC_INTPTR_TYPE INTPTR_TYPE
+#elif UNIC_INTPTR_MAX == UNIC_INT_MAX
+# define UNIC_INTPTR_TYPE int
+#elif UNIC_INTPTR_MAX > UNIC_LONG_MAX
+# define UNIC_INTPTR_TYPE long long int
+#else
+# define UNIC_INTPTR_TYPE long int
+#endif
+
+typedef UNIC_INTPTR_TYPE unic_intptr_t;
+
+#ifdef INTPTR_C
+# define UNIC_INTPTR_C INTPTR_C
+#elif UNIC_INTPTR_MAX == UNIC_INT_MAX
+# define UNIC_INTPTR_C(VAL) VAL
+#elif UNIC_INTPTR_MAX > UNIC_LONG_MAX
+# define UNIC_INTPTR_C(VAL) VAL##LL
+#else
+# define UNIC_INTPTR_C(VAL) VAL##L
+#endif
+
+#ifdef PRI_INTPTR
+# define UNIC_PRI_INTPTR PRI_INTPTR
+#elif UNIC_INTPTR_MAX == UNIC_INT_MAX
+# define UNIC_PRI_INTPTR
+#elif UNIC_INTPTR_MAX > UNIC_LONG_MAX
+# define UNIC_PRI_INTPTR "ll"
+#else
+# define UNIC_PRI_INTPTR "l"
+#endif
+
+#ifdef SCN_INTPTR
+# define UNIC_SCN_INTPTR SCN_INTPTR
+#elif UNIC_INTPTR_MAX == UNIC_INT_MAX
+# define UNIC_SCN_INTPTR
+#elif UNIC_INTPTR_MAX > UNIC_LONG_MAX
+# define UNIC_SCN_INTPTR "ll"
+#else
+# define UNIC_SCN_INTPTR "l"
+#endif
+
+#define UNIC_PRIiINTPTR UNIC_PRI_INTPTR "i"
+#define UNIC_PRIoINTPTR UNIC_PRI_INTPTR "o"
+#define UNIC_PRIuINTPTR UNIC_PRI_INTPTR "u"
+#define UNIC_PRIxINTPTR UNIC_PRI_INTPTR "x"
+#define UNIC_PRIXINTPTR UNIC_PRI_INTPTR "X"
+
+#define UNIC_SCNiINTPTR UNIC_SCN_INTPTR "i"
+#define UNIC_SCNoINTPTR UNIC_SCN_INTPTR "o"
+#define UNIC_SCNuINTPTR UNIC_SCN_INTPTR "u"
+#define UNIC_SCNxINTPTR UNIC_SCN_INTPTR "x"
+#define UNIC_SCNXINTPTR UNIC_SCN_INTPTR "X"
+
+#ifdef UNIC_FALLBACK
+
+# ifndef __intptr_t_defined
+#  define __intptr_t_defined
+typedef unic_intptr_t intptr_t;
+# endif
+
+#ifndef INTPTR_MAX
+# define INTPTR_MAX UNIC_INTPTR_MAX
+#endif
+
+#ifndef INTPTR_MIN
+# define INTPTR_MIN UNIC_INTPTR_MIN
+#endif
+
+#ifndef SIZEOF_INTPTR
+# define SIZEOF_INTPTR UNIC_SIZEOF_INTPTR
+#endif
+
+#ifndef INTPTR_WIDTH
+# define INTPTR_WIDTH UNIC_INTPTR_WIDTH
+#endif
+
+#ifndef INTPTR_TYPE
+# define INTPTR_TYPE UNIC_INTPTR_TYPE
+#endif
+
+#ifndef INTPTR_C
+# define INTPTR_C UNIC_INTPTR_C
+#endif
+
+#ifndef PRIxINTPTR
+# define PRIiINTPTR UNIC_PRIiINTPTR
+# define PRIoINTPTR UNIC_PRIoINTPTR
+# define PRIuINTPTR UNIC_PRIuINTPTR
+# define PRIxINTPTR UNIC_PRIxINTPTR
+# define PRIXINTPTR UNIC_PRIXINTPTR
+#endif
+
+#ifndef SCNxINTPTR
+# define SCNiINTPTR UNIC_SCNiINTPTR
+# define SCNoINTPTR UNIC_SCNoINTPTR
+# define SCNuINTPTR UNIC_SCNuINTPTR
+# define SCNxINTPTR UNIC_SCNxINTPTR
+# define SCNXINTPTR UNIC_SCNXINTPTR
+#endif
+
+#endif /* UNIC_FALLBACK */
+
+#endif

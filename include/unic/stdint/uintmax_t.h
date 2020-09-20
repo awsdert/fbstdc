@@ -1,0 +1,129 @@
+#ifndef UNIC_UINTMAX_C
+#include "ssize_t.h"
+
+/* Since these macros can function as fallbacks check for originals 1st */
+
+#ifdef UINTMAX_MAX
+# define UNIC_UINTMAX_MAX UINTMAX_MAX
+#else
+# define UNIC_UINTMAX_MAX UNIC___MAX(UNIC_SSIZE_MAX)
+#endif
+
+#ifdef UINTMAX_END_BIT
+# define UNIC_UINTMAX_END_BIT UINTMAX_END_BIT
+#else
+# define UNIC_UINTMAX_END_BIT (~(SIZE_MAX>>1))
+#endif
+
+#ifdef SIZEOF_UINTMAX
+# define UNIC_SIZEOF_UINTMAX SIZEOF_UINTMAX
+#else
+# define UNIC_SIZEOF_UINTMAX UNIC_SIZEOF_SSIZE
+#endif
+
+#ifdef UINTMAX_WIDTH
+# define UNIC_UINTMAX_WIDTH UINTMAX_WIDTH
+#else
+# define UNIC_UINTMAX_WIDTH (UNIC_SIZEOF_UINTMAX * UNIC_CHAR_BIT)
+#endif
+
+#ifdef UINTMAX_TYPE
+# define UNIC_UINTMAX_TYPE UINTMAX_TYPE
+#elif UNIC_UINTMAX_MAX == UNIC_INT_MAX
+# define UNIC_UINTMAX_TYPE int
+#elif UNIC_UINTMAX_MAX > UNIC_LONG_MAX
+# define UNIC_UINTMAX_TYPE long long int
+#else
+# define UNIC_UINTMAX_TYPE long int
+#endif
+
+typedef UNIC_UINTMAX_TYPE unic_uintmax_t;
+
+#ifdef UINTMAX_C
+# define UNIC_UINTMAX_C UINTMAX_C
+#elif UNIC_UINTMAX_MAX == UNIC_INT_MAX
+# define UNIC_UINTMAX_C(VAL) VAL
+#elif UNIC_UINTMAX_MAX > UNIC_LONG_MAX
+# define UNIC_UINTMAX_C(VAL) VAL##LL
+#else
+# define UNIC_UINTMAX_C(VAL) VAL##L
+#endif
+
+#ifdef PRI_UINTMAX
+# define UNIC_PRI_UINTMAX PRI_UINTMAX
+#elif UNIC_UINTMAX_MAX == UNIC_INT_MAX
+# define UNIC_PRI_UINTMAX
+#elif UNIC_UINTMAX_MAX > UNIC_LONG_MAX
+# define UNIC_PRI_UINTMAX "ll"
+#else
+# define UNIC_PRI_UINTMAX "l"
+#endif
+
+#ifdef SCN_UINTMAX
+# define UNIC_SCN_UINTMAX SCN_UINTMAX
+#elif UNIC_UINTMAX_MAX == UNIC_INT_MAX
+# define UNIC_SCN_UINTMAX
+#elif UNIC_UINTMAX_MAX > UNIC_LONG_MAX
+# define UNIC_SCN_UINTMAX "ll"
+#else
+# define UNIC_SCN_UINTMAX "l"
+#endif
+
+#define UNIC_PRIiUINTMAX UNIC_PRI_UINTMAX "i"
+#define UNIC_PRIoUINTMAX UNIC_PRI_UINTMAX "o"
+#define UNIC_PRIuUINTMAX UNIC_PRI_UINTMAX "u"
+#define UNIC_PRIxUINTMAX UNIC_PRI_UINTMAX "x"
+#define UNIC_PRIXUINTMAX UNIC_PRI_UINTMAX "X"
+
+#define UNIC_SCNiUINTMAX UNIC_SCN_UINTMAX "i"
+#define UNIC_SCNoUINTMAX UNIC_SCN_UINTMAX "o"
+#define UNIC_SCNuUINTMAX UNIC_SCN_UINTMAX "u"
+#define UNIC_SCNxUINTMAX UNIC_SCN_UINTMAX "x"
+#define UNIC_SCNXUINTMAX UNIC_SCN_UINTMAX "X"
+
+#ifdef UNIC_FALLBACK
+
+# ifndef __uintmax_t_defined
+#  define __uintmax_t_defined
+typedef unic_uintmax_t uintmax_t;
+# endif
+
+#ifndef UINTMAX_MAX
+# define UINTMAX_MAX UNIC_UINTMAX_MAX
+#endif
+
+#ifndef SIZEOF_UINTMAX
+# define SIZEOF_UINTMAX UNIC_SIZEOF_UINTMAX
+#endif
+
+#ifndef UINTMAX_WIDTH
+# define UINTMAX_WIDTH UNIC_UINTMAX_WIDTH
+#endif
+
+#ifndef UINTMAX_TYPE
+# define UINTMAX_TYPE UNIC_UINTMAX_TYPE
+#endif
+
+#ifndef UINTMAX_C
+# define UINTMAX_C UNIC_UINTMAX_C
+#endif
+
+#ifndef PRIxSIZE
+# define PRIiUINTMAX UNIC_PRIiSIZE
+# define PRIoUINTMAX UNIC_PRIoSIZE
+# define PRIuUINTMAX UNIC_PRIuSIZE
+# define PRIxUINTMAX UNIC_PRIxSIZE
+# define PRIXUINTMAX UNIC_PRIXSIZE
+#endif
+
+#ifndef SCNxSIZE
+# define SCNiUINTMAX UNIC_SCNiSIZE
+# define SCNoUINTMAX UNIC_SCNoSIZE
+# define SCNuUINTMAX UNIC_SCNuSIZE
+# define SCNxUINTMAX UNIC_SCNxSIZE
+# define SCNXUINTMAX UNIC_SCNXSIZE
+#endif
+
+#endif /* UNIC_FALLBACK */
+
+#endif

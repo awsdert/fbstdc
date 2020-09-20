@@ -50,7 +50,7 @@
 #endif
 
 #define UNIC_SQUARE(VAL) ((VAL)*(VAL))
-#define UNIC___MAX(IMAX_FOR_SIZE) (1ULL | ((IMAX_FOR_SIZE) << 1))
+#define UNIC___MAX(IMAX_FOR_SIZE) (1U | ((IMAX_FOR_SIZE) << 1))
 #define UNIC___MIN(IMAX_FOR_SIZE) ((-(IMAX_FOR_SIZE))-1)
 #define UNIC__IMAX(SIZE) (~((~0LL) << ((UNIC_CHAR_BIT*(SIZE))-1)))
 #define UNIC__IMIN(SIZE) UNIC___MIN(UNIC__IMAX(SIZE))

@@ -1,0 +1,139 @@
+#ifndef UNIC_PTRDIFF_C
+#include "ssize_t.h"
+
+/* Since these macros can function as fallbacks check for originals 1st */
+
+#ifdef PTRDIFF_MAX
+# define UNIC_PTRDIFF_MAX PTRDIFF_MAX
+#else
+# define UNIC_PTRDIFF_MAX UNIC_SSIZE_MAX
+#endif
+
+#ifdef PTRDIFF_MIN
+# define UNIC_PTRDIFF_MIN PTRDIFF_MIN
+#else
+# define UNIC_PTRDIFF_MIN UNIC___MIN(UNIC_PTRDIFF_MAX)
+#endif
+
+#ifdef PTRDIFF_END_BIT
+# define UNIC_PTRDIFF_END_BIT PTRDIFF_END_BIT
+#else
+# define UNIC_PTRDIFF_END_BIT UNIC_PTRDIFF_MIN
+#endif
+
+#ifdef SIZEOF_SIZE
+# define UNIC_SIZEOF_PTRDIFF SIZEOF_PTRDIFF
+#else
+# define UNIC_SIZEOF_PTRDIFF SIZEOF_BY_IMAX(PTRDIFF_MAX)
+#endif
+
+#ifdef PTRDIFF_WIDTH
+# define UNIC_PTRDIFF_WIDTH PTRDIFF_WIDTH
+#else
+# define UNIC_PTRDIFF_WIDTH (UNIC_SIZEOF_PTRDIFF * UNIC_CHAR_BIT)
+#endif
+
+#ifdef PTRDIFF_TYPE
+# define UNIC_PTRDIFF_TYPE PTRDIFF_TYPE
+#elif UNIC_PTRDIFF_MAX == UNIC_INT_MAX
+# define UNIC_PTRDIFF_TYPE int
+#elif UNIC_PTRDIFF_MAX > UNIC_LONG_MAX
+# define UNIC_PTRDIFF_TYPE long long int
+#else
+# define UNIC_PTRDIFF_TYPE long int
+#endif
+
+typedef UNIC_PTRDIFF_TYPE unic_ptrdiff_t;
+
+#ifdef PTRDIFF_C
+# define UNIC_PTRDIFF_C PTRDIFF_C
+#elif UNIC_PTRDIFF_MAX == UNIC_INT_MAX
+# define UNIC_PTRDIFF_C(VAL) VAL
+#elif UNIC_PTRDIFF_MAX > UNIC_LONG_MAX
+# define UNIC_PTRDIFF_C(VAL) VAL##LL
+#else
+# define UNIC_PTRDIFF_C(VAL) VAL##L
+#endif
+
+#ifdef PRI_PTRDIFF
+# define UNIC_PRI_PTRDIFF PRI_PTRDIFF
+#elif UNIC_PTRDIFF_MAX == UNIC_INT_MAX
+# define UNIC_PRI_PTRDIFF
+#elif UNIC_PTRDIFF_MAX > UNIC_LONG_MAX
+# define UNIC_PRI_PTRDIFF "ll"
+#else
+# define UNIC_PRI_PTRDIFF "l"
+#endif
+
+#ifdef SCN_PTRDIFF
+# define UNIC_SCN_PTRDIFF SCN_PTRDIFF
+#elif UNIC_PTRDIFF_MAX == UNIC_INT_MAX
+# define UNIC_SCN_PTRDIFF
+#elif UNIC_PTRDIFF_MAX > UNIC_LONG_MAX
+# define UNIC_SCN_PTRDIFF "ll"
+#else
+# define UNIC_SCN_PTRDIFF "l"
+#endif
+
+#define UNIC_PRIiPTRDIFF UNIC_PRI_PTRDIFF "i"
+#define UNIC_PRIoPTRDIFF UNIC_PRI_PTRDIFF "o"
+#define UNIC_PRIuPTRDIFF UNIC_PRI_PTRDIFF "u"
+#define UNIC_PRIxPTRDIFF UNIC_PRI_PTRDIFF "x"
+#define UNIC_PRIXPTRDIFF UNIC_PRI_PTRDIFF "X"
+
+#define UNIC_SCNiPTRDIFF UNIC_SCN_PTRDIFF "i"
+#define UNIC_SCNoPTRDIFF UNIC_SCN_PTRDIFF "o"
+#define UNIC_SCNuPTRDIFF UNIC_SCN_PTRDIFF "u"
+#define UNIC_SCNxPTRDIFF UNIC_SCN_PTRDIFF "x"
+#define UNIC_SCNXPTRDIFF UNIC_SCN_PTRDIFF "X"
+
+#ifdef UNIC_FALLBACK
+
+# ifndef __ptrdiff_t_defined
+#  define __ptrdiff_t_defined
+typedef unic_ptrdiff_t ptrdiff_t;
+# endif
+
+#ifndef PTRDIFF_MAX
+# define PTRDIFF_MAX UNIC_PTRDIFF_MAX
+#endif
+
+#ifndef PTRDIFF_MIN
+# define PTRDIFF_MIN UNIC_PTRDIFF_MIN
+#endif
+
+#ifndef SIZEOF_PTRDIFF
+# define SIZEOF_PTRDIFF UNIC_SIZEOF_PTRDIFF
+#endif
+
+#ifndef PTRDIFF_WIDTH
+# define PTRDIFF_WIDTH UNIC_PTRDIFF_WIDTH
+#endif
+
+#ifndef PTRDIFF_TYPE
+# define PTRDIFF_TYPE UNIC_PTRDIFF_TYPE
+#endif
+
+#ifndef PTRDIFF_C
+# define PTRDIFF_C UNIC_PTRDIFF_C
+#endif
+
+#ifndef PRIxPTRDIFF
+# define PRIiPTRDIFF UNIC_PRIiPTRDIFF
+# define PRIoPTRDIFF UNIC_PRIoPTRDIFF
+# define PRIuPTRDIFF UNIC_PRIuPTRDIFF
+# define PRIxPTRDIFF UNIC_PRIxPTRDIFF
+# define PRIXPTRDIFF UNIC_PRIXPTRDIFF
+#endif
+
+#ifndef SCNxPTRDIFF
+# define SCNiPTRDIFF UNIC_SCNiPTRDIFF
+# define SCNoPTRDIFF UNIC_SCNoPTRDIFF
+# define SCNuPTRDIFF UNIC_SCNuPTRDIFF
+# define SCNxPTRDIFF UNIC_SCNxPTRDIFF
+# define SCNXPTRDIFF UNIC_SCNXPTRDIFF
+#endif
+
+#endif /* UNIC_FALLBACK */
+
+#endif
