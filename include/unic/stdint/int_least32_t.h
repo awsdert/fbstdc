@@ -1,5 +1,5 @@
 #if !defined( UNIC_INT_LEAST32_C ) && UNIC_CAN_MAP_AT_LEAST_32BIT
-#include "_.h"
+#include "uint_least32_t.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
 
@@ -83,10 +83,12 @@ typedef UNIC_INT_LEAST32_TYPE unic_int_least32_t;
 
 #ifdef UNIC_FALLBACK
 
-# ifndef __int_least32_t_defined
-#  define __int_least32_t_defined
+# ifndef INT_LEAST32_C
 typedef unic_int_least32_t int_least32_t;
-# endif
+typedef unic_uint_least32_t uint_least32_t;
+# define INT_LEAST32_C UNIC_INT_LEAST32_C
+/* UINT_LEAST32_C will already be defined in uint_least32_t.h */
+#endif
 
 #ifndef INT_LEAST32_MAX
 # define INT_LEAST32_MAX UNIC_INT_LEAST32_MAX

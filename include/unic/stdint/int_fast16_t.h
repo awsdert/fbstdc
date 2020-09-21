@@ -1,5 +1,5 @@
 #if !defined( UNIC_INT_FAST16_C ) && UNIC_CAN_MAP_AT_LEAST_16BIT
-#include "_.h"
+#include "uint_fast16_t.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
 
@@ -74,10 +74,16 @@ typedef UNIC_INT_FAST16_TYPE unic_int_fast16_t;
 
 #ifdef UNIC_FALLBACK
 
-# ifndef __int_fast16_t_defined
-#  define __int_fast16_t_defined
+#ifndef INT_FAST16_MAX
 typedef unic_int_fast16_t int_fast16_t;
-# endif
+typedef unic_uint_fast16_t uint_fast16_t;
+# define INT_FAST16_MAX UNIC_INT_FAST16_MAX
+/* UINT_FAST16_MAX will already be defined in uint_fast16_t.h */
+#endif
+
+# ifndef INT_FAST16_C
+# define INT_FAST16_C UNIC_INT_FAST16_C
+#endif
 
 #ifndef INT_FAST16_MAX
 # define INT_FAST16_MAX UNIC_INT_FAST16_MAX
@@ -97,10 +103,6 @@ typedef unic_int_fast16_t int_fast16_t;
 
 #ifndef INT_FAST16_TYPE
 # define INT_FAST16_TYPE UNIC_INT_FAST16_TYPE
-#endif
-
-#ifndef INT_FAST16_C
-# define INT_FAST16_C UNIC_INT_FAST16_C
 #endif
 
 #ifndef PRIxINT_FAST16

@@ -21,7 +21,7 @@
 # define UNIC_PTRDIFF_END_BIT UNIC_PTRDIFF_MIN
 #endif
 
-#ifdef SIZEOF_SIZE
+#ifdef SIZEOF_PTRDIFF
 # define UNIC_SIZEOF_PTRDIFF SIZEOF_PTRDIFF
 #else
 # define UNIC_SIZEOF_PTRDIFF UNIC_SIZEOF_BY_IMAX(PTRDIFF_MAX)
@@ -89,9 +89,173 @@ typedef UNIC_PTRDIFF_TYPE unic_ptrdiff_t;
 
 #ifdef UNIC_FALLBACK
 
+# ifndef ___int_ptrdiff_t_h
+#  define ___int_ptrdiff_t_h
+# ifndef __ptrdiff_t_defined__
+#  define __ptrdiff_t_defined__
 # ifndef __ptrdiff_t_defined
 #  define __ptrdiff_t_defined
+# ifndef _ptrdiff_t_defined_
+#  define _ptrdiff_t_defined_
+# ifndef _ptrdiff_t_defined
+#  define _ptrdiff_t_defined
+# ifndef __PTRDIFF_T_DEFINED__
+#  define __PTRDIFF_T_DEFINED__
+# ifndef __PTRDIFF_T_DEFINED
+#  define __PTRDIFF_T_DEFINED
+# ifndef _PTRDIFF_T_DEFINED_
+#  define _PTRDIFF_T_DEFINED_
+# ifndef _PTRDIFF_T_DEFINED
+#  define _PTRDIFF_T_DEFINED
+# ifndef __ptrdiff_t__
+#  define __ptrdiff_t__
+# ifndef __ptrdiff_t
+/* Apparently __ptrdiff_t can be a typedef,
+ * avoid messing with it in that scenario then
+*/
+#  if !defined(__DragonFly__) \
+	|| !defined(__FreeBSD__) \
+	|| !defined(__FreeBSD_kernel__) \
+	|| !defined(__VMS__)
+#   define __ptrdiff_t
+#  endif
+# ifndef _ptrdiff_t_
+#  define _ptrdiff_t_
+# ifndef _ptrdiff_t
+#  define _ptrdiff_t
+# ifndef __PTRDIFF_T__
+#  define __PTRDIFF_T__
+# ifndef __PTRDIFF_T
+#  define __PTRDIFF_T
+# ifndef _PTRDIFF_T_
+#  define _PTRDIFF_T_
+# ifndef _PTRDIFF_T
+#  define _PTRDIFF_T
+# ifndef __BSD_PTRDIFF_T_DEFINED__
+#  define __BSD_PTRDIFF_T_DEFINED__
+# ifndef __BSD_PTRDIFF_T_DEFINED
+#  define __BSD_PTRDIFF_T_DEFINED
+# ifndef _BSD_PTRDIFF_T_DEFINED_
+#  define _BSD_PTRDIFF_T_DEFINED_
+# ifndef _BSD_PTRDIFF_T_DEFINED
+#  define _BSD_PTRDIFF_T_DEFINED
+# ifndef __BSD_PTRDIFF_T__
+#  define __BSD_PTRDIFF_T__
+# ifndef __BSD_PTRDIFF_T
+#  define __BSD_PTRDIFF_T
+# ifndef _BSD_PTRDIFF_T_
+#  define _BSD_PTRDIFF_T_
+# ifndef _BSD_PTRDIFF_T
+#  define _BSD_PTRDIFF_T
+# ifndef __SYS_PTRDIFF_T_DEFINED__
+#  define __SYS_PTRDIFF_T_DEFINED__
+# ifndef __SYS_PTRDIFF_T_DEFINED
+#  define __SYS_PTRDIFF_T_DEFINED
+# ifndef _SYS_PTRDIFF_T_DEFINED_
+#  define _SYS_PTRDIFF_T_DEFINED_
+# ifndef _SYS_PTRDIFF_T_DEFINED
+#  define _SYS_PTRDIFF_T_DEFINED
+# ifndef __SYS_PTRDIFF_T__
+#  define __SYS_PTRDIFF_T__
+# ifndef __SYS_PTRDIFF_T
+#  define __SYS_PTRDIFF_T
+# ifndef _SYS_PTRDIFF_T_
+#  define _SYS_PTRDIFF_T_
+# ifndef _SYS_PTRDIFF_T
+#  define _SYS_PTRDIFF_T
+# ifndef __GCC_PTRDIFF_T_DEFINED__
+#  define __GCC_PTRDIFF_T_DEFINED__
+# ifndef __GCC_PTRDIFF_T_DEFINED
+#  define __GCC_PTRDIFF_T_DEFINED
+# ifndef _GCC_PTRDIFF_T_DEFINED_
+#  define _GCC_PTRDIFF_T_DEFINED_
+# ifndef _GCC_PTRDIFF_T_DEFINED
+#  define _GCC_PTRDIFF_T_DEFINED
+# ifndef __GCC_PTRDIFF_T__
+#  define __GCC_PTRDIFF_T__
+# ifndef __GCC_PTRDIFF_T
+#  define __GCC_PTRDIFF_T
+# ifndef _GCC_PTRDIFF_T_
+#  define _GCC_PTRDIFF_T_
+# ifndef _GCC_PTRDIFF_T
+#  define _GCC_PTRDIFF_T
+# ifndef __PTRDIFFT_DEFINED__
+#  define __PTRDIFFT_DEFINED__
+# ifndef __PTRDIFFT_DEFINED
+#  define __PTRDIFFT_DEFINED
+# ifndef _PTRDIFFT_DEFINED_
+#  define _PTRDIFFT_DEFINED_
+# ifndef _PTRDIFFT_DEFINED
+#  define _PTRDIFFT_DEFINED
+# ifndef __PTRDIFFT__
+#  define __PTRDIFFT__
+# ifndef __PTRDIFFT
+#  define __PTRDIFFT
+# ifndef _PTRDIFFT_
+#  define _PTRDIFFT_
+# ifndef _PTRDIFFT
+#  define _PTRDIFFT
+# ifndef __T_PTRDIFF__
+#  define __T_PTRDIFF__
+# ifndef __T_PTRDIFF
+#  define __T_PTRDIFF
+# ifndef _T_PTRDIFF_
+#  define _T_PTRDIFF_
+# ifndef _T_PTRDIFF
+#  define _T_PTRDIFF
 typedef unic_ptrdiff_t ptrdiff_t;
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
 # endif
 
 #ifndef PTRDIFF_MAX

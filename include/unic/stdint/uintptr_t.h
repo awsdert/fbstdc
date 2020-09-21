@@ -83,10 +83,7 @@ typedef UNIC_UINTPTR_TYPE unic_uintptr_t;
 
 #ifdef UNIC_FALLBACK
 
-# ifndef __uintptr_t_defined
-#  define __uintptr_t_defined
-typedef unic_uintptr_t uintptr_t;
-# endif
+/* uintptr_t must be defined with intptr_t */
 
 #ifndef UINTPTR_MAX
 # define UINTPTR_MAX UNIC_UINTPTR_MAX

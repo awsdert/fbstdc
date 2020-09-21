@@ -67,10 +67,7 @@ typedef UNIC_UINT_FAST16_TYPE unic_uint_fast16_t;
 
 #ifdef UNIC_FALLBACK
 
-# ifndef __uint_fast16_t_defined
-#  define __uint_fast16_t_defined
-typedef unic_uint_fast16_t uint_fast16_t;
-# endif
+/* include int_fast16_t.h instead for this typedef */
 
 #ifndef UINT_FAST16_MAX
 # define UINT_FAST16_MAX UNIC_UINT_FAST16_MAX

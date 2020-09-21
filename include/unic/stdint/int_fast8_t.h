@@ -1,5 +1,5 @@
 #if !defined( UNIC_INT_FAST8_C ) && UNIC_CHAR_BIT >= 8
-#include "_.h"
+#include "uint_fast8_t.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
 
@@ -21,7 +21,7 @@
 # define UNIC_INT_FAST8_END_BIT UNIC_INT_FAST8_MIN
 #endif
 
-#ifdef SIZEOF_SIZE
+#ifdef SIZEOF_INT_FAST8
 # define UNIC_SIZEOF_INT_FAST8 SIZEOF_INT_FAST8
 #else
 # define UNIC_SIZEOF_INT_FAST8 UNIC_SIZEOF_BY_IMAX(INT_FAST8_MAX)
@@ -74,9 +74,174 @@ typedef UNIC_INT_FAST8_TYPE unic_int_fast8_t;
 
 #ifdef UNIC_FALLBACK
 
+# ifndef ___int_int_fast8_t_h
+#  define ___int_int_fast8_t_h
+# ifndef __int_fast8_t_defined__
+#  define __int_fast8_t_defined__
 # ifndef __int_fast8_t_defined
 #  define __int_fast8_t_defined
+# ifndef _int_fast8_t_defined_
+#  define _int_fast8_t_defined_
+# ifndef _int_fast8_t_defined
+#  define _int_fast8_t_defined
+# ifndef __INT_FAST8_T_DEFINED__
+#  define __INT_FAST8_T_DEFINED__
+# ifndef __INT_FAST8_T_DEFINED
+#  define __INT_FAST8_T_DEFINED
+# ifndef _INT_FAST8_T_DEFINED_
+#  define _INT_FAST8_T_DEFINED_
+# ifndef _INT_FAST8_T_DEFINED
+#  define _INT_FAST8_T_DEFINED
+# ifndef __int_fast8_t__
+#  define __int_fast8_t__
+# ifndef __int_fast8_t
+/* Apparently __int_fast8_t can be a typedef,
+ * avoid messing with it in that scenario then
+*/
+#  if !defined(__DragonFly__) \
+	|| !defined(__FreeBSD__) \
+	|| !defined(__FreeBSD_kernel__) \
+	|| !defined(__VMS__)
+#   define __int_fast8_t
+#  endif
+# ifndef _int_fast8_t_
+#  define _int_fast8_t_
+# ifndef _int_fast8_t
+#  define _int_fast8_t
+# ifndef __INT_FAST8_T__
+#  define __INT_FAST8_T__
+# ifndef __INT_FAST8_T
+#  define __INT_FAST8_T
+# ifndef _INT_FAST8_T_
+#  define _INT_FAST8_T_
+# ifndef _INT_FAST8_T
+#  define _INT_FAST8_T
+# ifndef __BSD_INT_FAST8_T_DEFINED__
+#  define __BSD_INT_FAST8_T_DEFINED__
+# ifndef __BSD_INT_FAST8_T_DEFINED
+#  define __BSD_INT_FAST8_T_DEFINED
+# ifndef _BSD_INT_FAST8_T_DEFINED_
+#  define _BSD_INT_FAST8_T_DEFINED_
+# ifndef _BSD_INT_FAST8_T_DEFINED
+#  define _BSD_INT_FAST8_T_DEFINED
+# ifndef __BSD_INT_FAST8_T__
+#  define __BSD_INT_FAST8_T__
+# ifndef __BSD_INT_FAST8_T
+#  define __BSD_INT_FAST8_T
+# ifndef _BSD_INT_FAST8_T_
+#  define _BSD_INT_FAST8_T_
+# ifndef _BSD_INT_FAST8_T
+#  define _BSD_INT_FAST8_T
+# ifndef __SYS_INT_FAST8_T_DEFINED__
+#  define __SYS_INT_FAST8_T_DEFINED__
+# ifndef __SYS_INT_FAST8_T_DEFINED
+#  define __SYS_INT_FAST8_T_DEFINED
+# ifndef _SYS_INT_FAST8_T_DEFINED_
+#  define _SYS_INT_FAST8_T_DEFINED_
+# ifndef _SYS_INT_FAST8_T_DEFINED
+#  define _SYS_INT_FAST8_T_DEFINED
+# ifndef __SYS_INT_FAST8_T__
+#  define __SYS_INT_FAST8_T__
+# ifndef __SYS_INT_FAST8_T
+#  define __SYS_INT_FAST8_T
+# ifndef _SYS_INT_FAST8_T_
+#  define _SYS_INT_FAST8_T_
+# ifndef _SYS_INT_FAST8_T
+#  define _SYS_INT_FAST8_T
+# ifndef __GCC_INT_FAST8_T_DEFINED__
+#  define __GCC_INT_FAST8_T_DEFINED__
+# ifndef __GCC_INT_FAST8_T_DEFINED
+#  define __GCC_INT_FAST8_T_DEFINED
+# ifndef _GCC_INT_FAST8_T_DEFINED_
+#  define _GCC_INT_FAST8_T_DEFINED_
+# ifndef _GCC_INT_FAST8_T_DEFINED
+#  define _GCC_INT_FAST8_T_DEFINED
+# ifndef __GCC_INT_FAST8_T__
+#  define __GCC_INT_FAST8_T__
+# ifndef __GCC_INT_FAST8_T
+#  define __GCC_INT_FAST8_T
+# ifndef _GCC_INT_FAST8_T_
+#  define _GCC_INT_FAST8_T_
+# ifndef _GCC_INT_FAST8_T
+#  define _GCC_INT_FAST8_T
+# ifndef __INT_FAST8T_DEFINED__
+#  define __INT_FAST8T_DEFINED__
+# ifndef __INT_FAST8T_DEFINED
+#  define __INT_FAST8T_DEFINED
+# ifndef _INT_FAST8T_DEFINED_
+#  define _INT_FAST8T_DEFINED_
+# ifndef _INT_FAST8T_DEFINED
+#  define _INT_FAST8T_DEFINED
+# ifndef __INT_FAST8T__
+#  define __INT_FAST8T__
+# ifndef __INT_FAST8T
+#  define __INT_FAST8T
+# ifndef _INT_FAST8T_
+#  define _INT_FAST8T_
+# ifndef _INT_FAST8T
+#  define _INT_FAST8T
+# ifndef __T_INT_FAST8__
+#  define __T_INT_FAST8__
+# ifndef __T_INT_FAST8
+#  define __T_INT_FAST8
+# ifndef _T_INT_FAST8_
+#  define _T_INT_FAST8_
+# ifndef _T_INT_FAST8
+#  define _T_INT_FAST8
 typedef unic_int_fast8_t int_fast8_t;
+typedef unic_uint_fast8_t uint_fast8_t;
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
 # endif
 
 #ifndef INT_FAST8_MAX

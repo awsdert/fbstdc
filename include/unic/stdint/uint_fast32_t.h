@@ -77,10 +77,7 @@ typedef UNIC_UINT_FAST32_TYPE unic_uint_fast32_t;
 
 #ifdef UNIC_FALLBACK
 
-# ifndef __uint_fast32_t_defined
-#  define __uint_fast32_t_defined
-typedef unic_uint_fast32_t uint_fast32_t;
-# endif
+/* include int_fast32_t.h instead for this typedef */
 
 #ifndef UINT_FAST32_MAX
 # define UINT_FAST32_MAX UNIC_UINT_FAST32_MAX

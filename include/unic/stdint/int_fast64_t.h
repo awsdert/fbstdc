@@ -1,5 +1,5 @@
 #if !defined( UNIC_INT_FAST64_C ) && UNIC_CAN_MAP_AT_LEAST_64BIT
-#include "_.h"
+#include "uint_fast64_t.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
 
@@ -93,9 +93,174 @@ typedef UNIC_INT_FAST64_TYPE unic_int_fast64_t;
 
 #ifdef UNIC_FALLBACK
 
+# ifndef ___int_int_fast64_t_h
+#  define ___int_int_fast64_t_h
+# ifndef __int_fast64_t_defined__
+#  define __int_fast64_t_defined__
 # ifndef __int_fast64_t_defined
 #  define __int_fast64_t_defined
+# ifndef _int_fast64_t_defined_
+#  define _int_fast64_t_defined_
+# ifndef _int_fast64_t_defined
+#  define _int_fast64_t_defined
+# ifndef __INT_FAST64_T_DEFINED__
+#  define __INT_FAST64_T_DEFINED__
+# ifndef __INT_FAST64_T_DEFINED
+#  define __INT_FAST64_T_DEFINED
+# ifndef _INT_FAST64_T_DEFINED_
+#  define _INT_FAST64_T_DEFINED_
+# ifndef _INT_FAST64_T_DEFINED
+#  define _INT_FAST64_T_DEFINED
+# ifndef __int_fast64_t__
+#  define __int_fast64_t__
+# ifndef __int_fast64_t
+/* Apparently __int_fast64_t can be a typedef,
+ * avoid messing with it in that scenario then
+*/
+#  if !defined(__DragonFly__) \
+	|| !defined(__FreeBSD__) \
+	|| !defined(__FreeBSD_kernel__) \
+	|| !defined(__VMS__)
+#   define __int_fast64_t
+#  endif
+# ifndef _int_fast64_t_
+#  define _int_fast64_t_
+# ifndef _int_fast64_t
+#  define _int_fast64_t
+# ifndef __INT_FAST64_T__
+#  define __INT_FAST64_T__
+# ifndef __INT_FAST64_T
+#  define __INT_FAST64_T
+# ifndef _INT_FAST64_T_
+#  define _INT_FAST64_T_
+# ifndef _INT_FAST64_T
+#  define _INT_FAST64_T
+# ifndef __BSD_INT_FAST64_T_DEFINED__
+#  define __BSD_INT_FAST64_T_DEFINED__
+# ifndef __BSD_INT_FAST64_T_DEFINED
+#  define __BSD_INT_FAST64_T_DEFINED
+# ifndef _BSD_INT_FAST64_T_DEFINED_
+#  define _BSD_INT_FAST64_T_DEFINED_
+# ifndef _BSD_INT_FAST64_T_DEFINED
+#  define _BSD_INT_FAST64_T_DEFINED
+# ifndef __BSD_INT_FAST64_T__
+#  define __BSD_INT_FAST64_T__
+# ifndef __BSD_INT_FAST64_T
+#  define __BSD_INT_FAST64_T
+# ifndef _BSD_INT_FAST64_T_
+#  define _BSD_INT_FAST64_T_
+# ifndef _BSD_INT_FAST64_T
+#  define _BSD_INT_FAST64_T
+# ifndef __SYS_INT_FAST64_T_DEFINED__
+#  define __SYS_INT_FAST64_T_DEFINED__
+# ifndef __SYS_INT_FAST64_T_DEFINED
+#  define __SYS_INT_FAST64_T_DEFINED
+# ifndef _SYS_INT_FAST64_T_DEFINED_
+#  define _SYS_INT_FAST64_T_DEFINED_
+# ifndef _SYS_INT_FAST64_T_DEFINED
+#  define _SYS_INT_FAST64_T_DEFINED
+# ifndef __SYS_INT_FAST64_T__
+#  define __SYS_INT_FAST64_T__
+# ifndef __SYS_INT_FAST64_T
+#  define __SYS_INT_FAST64_T
+# ifndef _SYS_INT_FAST64_T_
+#  define _SYS_INT_FAST64_T_
+# ifndef _SYS_INT_FAST64_T
+#  define _SYS_INT_FAST64_T
+# ifndef __GCC_INT_FAST64_T_DEFINED__
+#  define __GCC_INT_FAST64_T_DEFINED__
+# ifndef __GCC_INT_FAST64_T_DEFINED
+#  define __GCC_INT_FAST64_T_DEFINED
+# ifndef _GCC_INT_FAST64_T_DEFINED_
+#  define _GCC_INT_FAST64_T_DEFINED_
+# ifndef _GCC_INT_FAST64_T_DEFINED
+#  define _GCC_INT_FAST64_T_DEFINED
+# ifndef __GCC_INT_FAST64_T__
+#  define __GCC_INT_FAST64_T__
+# ifndef __GCC_INT_FAST64_T
+#  define __GCC_INT_FAST64_T
+# ifndef _GCC_INT_FAST64_T_
+#  define _GCC_INT_FAST64_T_
+# ifndef _GCC_INT_FAST64_T
+#  define _GCC_INT_FAST64_T
+# ifndef __INT_FAST64T_DEFINED__
+#  define __INT_FAST64T_DEFINED__
+# ifndef __INT_FAST64T_DEFINED
+#  define __INT_FAST64T_DEFINED
+# ifndef _INT_FAST64T_DEFINED_
+#  define _INT_FAST64T_DEFINED_
+# ifndef _INT_FAST64T_DEFINED
+#  define _INT_FAST64T_DEFINED
+# ifndef __INT_FAST64T__
+#  define __INT_FAST64T__
+# ifndef __INT_FAST64T
+#  define __INT_FAST64T
+# ifndef _INT_FAST64T_
+#  define _INT_FAST64T_
+# ifndef _INT_FAST64T
+#  define _INT_FAST64T
+# ifndef __T_INT_FAST64__
+#  define __T_INT_FAST64__
+# ifndef __T_INT_FAST64
+#  define __T_INT_FAST64
+# ifndef _T_INT_FAST64_
+#  define _T_INT_FAST64_
+# ifndef _T_INT_FAST64
+#  define _T_INT_FAST64
 typedef unic_int_fast64_t int_fast64_t;
+typedef unic_uint_fast64_t uint_fast64_t;
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
 # endif
 
 #ifndef INT_FAST64_MAX

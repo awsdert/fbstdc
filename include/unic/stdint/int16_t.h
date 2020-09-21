@@ -1,5 +1,5 @@
 #if !defined( UNIC_INT16_C ) && UNIC_CAN_MAP__EXACTLY_16BIT
-#include "_.h"
+#include "uint16_t.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
 
@@ -74,9 +74,174 @@ typedef UNIC_INT16_TYPE unic_int16_t;
 
 #ifdef UNIC_FALLBACK
 
+# ifndef ___int_int16_t_h
+#  define ___int_int16_t_h
+# ifndef __int16_t_defined__
+#  define __int16_t_defined__
 # ifndef __int16_t_defined
 #  define __int16_t_defined
+# ifndef _int16_t_defined_
+#  define _int16_t_defined_
+# ifndef _int16_t_defined
+#  define _int16_t_defined
+# ifndef __INT16_T_DEFINED__
+#  define __INT16_T_DEFINED__
+# ifndef __INT16_T_DEFINED
+#  define __INT16_T_DEFINED
+# ifndef _INT16_T_DEFINED_
+#  define _INT16_T_DEFINED_
+# ifndef _INT16_T_DEFINED
+#  define _INT16_T_DEFINED
+# ifndef __int16_t__
+#  define __int16_t__
+# ifndef __int16_t
+/* Apparently __int16_t can be a typedef,
+ * avoid messing with it in that scenario then
+*/
+#  if !defined(__DragonFly__) \
+	|| !defined(__FreeBSD__) \
+	|| !defined(__FreeBSD_kernel__) \
+	|| !defined(__VMS__)
+#   define __int16_t
+#  endif
+# ifndef _int16_t_
+#  define _int16_t_
+# ifndef _int16_t
+#  define _int16_t
+# ifndef __INT16_T__
+#  define __INT16_T__
+# ifndef __INT16_T
+#  define __INT16_T
+# ifndef _INT16_T_
+#  define _INT16_T_
+# ifndef _INT16_T
+#  define _INT16_T
+# ifndef __BSD_INT16_T_DEFINED__
+#  define __BSD_INT16_T_DEFINED__
+# ifndef __BSD_INT16_T_DEFINED
+#  define __BSD_INT16_T_DEFINED
+# ifndef _BSD_INT16_T_DEFINED_
+#  define _BSD_INT16_T_DEFINED_
+# ifndef _BSD_INT16_T_DEFINED
+#  define _BSD_INT16_T_DEFINED
+# ifndef __BSD_INT16_T__
+#  define __BSD_INT16_T__
+# ifndef __BSD_INT16_T
+#  define __BSD_INT16_T
+# ifndef _BSD_INT16_T_
+#  define _BSD_INT16_T_
+# ifndef _BSD_INT16_T
+#  define _BSD_INT16_T
+# ifndef __SYS_INT16_T_DEFINED__
+#  define __SYS_INT16_T_DEFINED__
+# ifndef __SYS_INT16_T_DEFINED
+#  define __SYS_INT16_T_DEFINED
+# ifndef _SYS_INT16_T_DEFINED_
+#  define _SYS_INT16_T_DEFINED_
+# ifndef _SYS_INT16_T_DEFINED
+#  define _SYS_INT16_T_DEFINED
+# ifndef __SYS_INT16_T__
+#  define __SYS_INT16_T__
+# ifndef __SYS_INT16_T
+#  define __SYS_INT16_T
+# ifndef _SYS_INT16_T_
+#  define _SYS_INT16_T_
+# ifndef _SYS_INT16_T
+#  define _SYS_INT16_T
+# ifndef __GCC_INT16_T_DEFINED__
+#  define __GCC_INT16_T_DEFINED__
+# ifndef __GCC_INT16_T_DEFINED
+#  define __GCC_INT16_T_DEFINED
+# ifndef _GCC_INT16_T_DEFINED_
+#  define _GCC_INT16_T_DEFINED_
+# ifndef _GCC_INT16_T_DEFINED
+#  define _GCC_INT16_T_DEFINED
+# ifndef __GCC_INT16_T__
+#  define __GCC_INT16_T__
+# ifndef __GCC_INT16_T
+#  define __GCC_INT16_T
+# ifndef _GCC_INT16_T_
+#  define _GCC_INT16_T_
+# ifndef _GCC_INT16_T
+#  define _GCC_INT16_T
+# ifndef __INT16T_DEFINED__
+#  define __INT16T_DEFINED__
+# ifndef __INT16T_DEFINED
+#  define __INT16T_DEFINED
+# ifndef _INT16T_DEFINED_
+#  define _INT16T_DEFINED_
+# ifndef _INT16T_DEFINED
+#  define _INT16T_DEFINED
+# ifndef __INT16T__
+#  define __INT16T__
+# ifndef __INT16T
+#  define __INT16T
+# ifndef _INT16T_
+#  define _INT16T_
+# ifndef _INT16T
+#  define _INT16T
+# ifndef __T_INT16__
+#  define __T_INT16__
+# ifndef __T_INT16
+#  define __T_INT16
+# ifndef _T_INT16_
+#  define _T_INT16_
+# ifndef _T_INT16
+#  define _T_INT16
 typedef unic_int16_t int16_t;
+typedef unic_uint16_t uint16_t;
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
 # endif
 
 #ifndef INT16_MAX

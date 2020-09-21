@@ -1,5 +1,5 @@
 #if !defined( UNIC_INT32_C ) && UNIC_CAN_MAP__EXACTLY_32BIT
-#include "_.h"
+#include "uint32_t.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
 
@@ -83,9 +83,174 @@ typedef UNIC_INT32_TYPE unic_int32_t;
 
 #ifdef UNIC_FALLBACK
 
+# ifndef ___int_int32_t_h
+#  define ___int_int32_t_h
+# ifndef __int32_t_defined__
+#  define __int32_t_defined__
 # ifndef __int32_t_defined
 #  define __int32_t_defined
+# ifndef _int32_t_defined_
+#  define _int32_t_defined_
+# ifndef _int32_t_defined
+#  define _int32_t_defined
+# ifndef __INT32_T_DEFINED__
+#  define __INT32_T_DEFINED__
+# ifndef __INT32_T_DEFINED
+#  define __INT32_T_DEFINED
+# ifndef _INT32_T_DEFINED_
+#  define _INT32_T_DEFINED_
+# ifndef _INT32_T_DEFINED
+#  define _INT32_T_DEFINED
+# ifndef __int32_t__
+#  define __int32_t__
+# ifndef __int32_t
+/* Apparently __int32_t can be a typedef,
+ * avoid messing with it in that scenario then
+*/
+#  if !defined(__DragonFly__) \
+	|| !defined(__FreeBSD__) \
+	|| !defined(__FreeBSD_kernel__) \
+	|| !defined(__VMS__)
+#   define __int32_t
+#  endif
+# ifndef _int32_t_
+#  define _int32_t_
+# ifndef _int32_t
+#  define _int32_t
+# ifndef __INT32_T__
+#  define __INT32_T__
+# ifndef __INT32_T
+#  define __INT32_T
+# ifndef _INT32_T_
+#  define _INT32_T_
+# ifndef _INT32_T
+#  define _INT32_T
+# ifndef __BSD_INT32_T_DEFINED__
+#  define __BSD_INT32_T_DEFINED__
+# ifndef __BSD_INT32_T_DEFINED
+#  define __BSD_INT32_T_DEFINED
+# ifndef _BSD_INT32_T_DEFINED_
+#  define _BSD_INT32_T_DEFINED_
+# ifndef _BSD_INT32_T_DEFINED
+#  define _BSD_INT32_T_DEFINED
+# ifndef __BSD_INT32_T__
+#  define __BSD_INT32_T__
+# ifndef __BSD_INT32_T
+#  define __BSD_INT32_T
+# ifndef _BSD_INT32_T_
+#  define _BSD_INT32_T_
+# ifndef _BSD_INT32_T
+#  define _BSD_INT32_T
+# ifndef __SYS_INT32_T_DEFINED__
+#  define __SYS_INT32_T_DEFINED__
+# ifndef __SYS_INT32_T_DEFINED
+#  define __SYS_INT32_T_DEFINED
+# ifndef _SYS_INT32_T_DEFINED_
+#  define _SYS_INT32_T_DEFINED_
+# ifndef _SYS_INT32_T_DEFINED
+#  define _SYS_INT32_T_DEFINED
+# ifndef __SYS_INT32_T__
+#  define __SYS_INT32_T__
+# ifndef __SYS_INT32_T
+#  define __SYS_INT32_T
+# ifndef _SYS_INT32_T_
+#  define _SYS_INT32_T_
+# ifndef _SYS_INT32_T
+#  define _SYS_INT32_T
+# ifndef __GCC_INT32_T_DEFINED__
+#  define __GCC_INT32_T_DEFINED__
+# ifndef __GCC_INT32_T_DEFINED
+#  define __GCC_INT32_T_DEFINED
+# ifndef _GCC_INT32_T_DEFINED_
+#  define _GCC_INT32_T_DEFINED_
+# ifndef _GCC_INT32_T_DEFINED
+#  define _GCC_INT32_T_DEFINED
+# ifndef __GCC_INT32_T__
+#  define __GCC_INT32_T__
+# ifndef __GCC_INT32_T
+#  define __GCC_INT32_T
+# ifndef _GCC_INT32_T_
+#  define _GCC_INT32_T_
+# ifndef _GCC_INT32_T
+#  define _GCC_INT32_T
+# ifndef __INT32T_DEFINED__
+#  define __INT32T_DEFINED__
+# ifndef __INT32T_DEFINED
+#  define __INT32T_DEFINED
+# ifndef _INT32T_DEFINED_
+#  define _INT32T_DEFINED_
+# ifndef _INT32T_DEFINED
+#  define _INT32T_DEFINED
+# ifndef __INT32T__
+#  define __INT32T__
+# ifndef __INT32T
+#  define __INT32T
+# ifndef _INT32T_
+#  define _INT32T_
+# ifndef _INT32T
+#  define _INT32T
+# ifndef __T_INT32__
+#  define __T_INT32__
+# ifndef __T_INT32
+#  define __T_INT32
+# ifndef _T_INT32_
+#  define _T_INT32_
+# ifndef _T_INT32
+#  define _T_INT32
 typedef unic_int32_t int32_t;
+typedef unic_uint32_t uint32_t;
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
 # endif
 
 #ifndef INT32_MAX

@@ -1,5 +1,5 @@
 #if !defined( UNIC_INT_FAST32_C ) && UNIC_CAN_MAP_AT_LEAST_32BIT
-#include "_.h"
+#include "uint_fast32_t.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
 
@@ -83,13 +83,11 @@ typedef UNIC_INT_FAST32_TYPE unic_int_fast32_t;
 
 #ifdef UNIC_FALLBACK
 
-# ifndef __int_fast32_t_defined
-#  define __int_fast32_t_defined
-typedef unic_int_fast32_t int_fast32_t;
-# endif
-
 #ifndef INT_FAST32_MAX
+typedef unic_int_fast32_t int_fast32_t;
+typedef unic_uint_fast32_t uint_fast32_t;
 # define INT_FAST32_MAX UNIC_INT_FAST32_MAX
+/* UINT_FAST32_MAX will already be defined in uint_fast32_t.h */
 #endif
 
 #ifndef INT_FAST32_MIN
@@ -99,6 +97,10 @@ typedef unic_int_fast32_t int_fast32_t;
 #ifndef SIZEOF_INT_FAST32
 # define SIZEOF_INT_FAST32 UNIC_SIZEOF_INT_FAST32
 #endif
+
+# ifndef INT_FAST32_C
+#  define INT_FAST32_C UNIC_INT_FAST32_C
+# endif
 
 #ifndef INT_FAST32_WIDTH
 # define INT_FAST32_WIDTH UNIC_INT_FAST32_WIDTH

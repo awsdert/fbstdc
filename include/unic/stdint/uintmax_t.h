@@ -1,12 +1,23 @@
 #ifndef UNIC_UINTMAX_C
-#include "ssize_t.h"
+#include "uint_fast8_t.h"
+#include "uint_fast16_t.h"
+#include "uint_fast32_t.h"
+#include "uint_fast64_t.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
 
-#ifdef UINTMAX_MAX
-# define UNIC_UINTMAX_MAX UINTMAX_MAX
+#ifdef INTMAX_MAX
+# define UNIC_UINTMAX_MAX INTMAX_MAX
+#elif defined( UNIC_UINT_FAST64_MAX )
+# define UNIC_UINTMAX_MAX UNIC_UINT_FAST64_MAX
+#elif defined( UNIC_UINT_FAST32_MAX )
+# define UNIC_UINTMAX_MAX UNIC_UINT_FAST32_MAX
+#elif defined( UNIC_UINT_FAST16_MAX )
+# define UNIC_UINTMAX_MAX UNIC_UINT_FAST16_MAX
+#elif defined( UNIC_UINT_FAST8_MAX )
+# define UNIC_UINTMAX_MAX UNIC_UINT_FAST8_MAX
 #else
-# define UNIC_UINTMAX_MAX UNIC___MAX(UNIC_SSIZE_MAX)
+# define UNIC_UINTMAX_MAX UNIC_UINT_MAX
 #endif
 
 #ifdef UINTMAX_END_BIT
@@ -18,7 +29,7 @@
 #ifdef SIZEOF_UINTMAX
 # define UNIC_SIZEOF_UINTMAX SIZEOF_UINTMAX
 #else
-# define UNIC_SIZEOF_UINTMAX UNIC_SIZEOF_SSIZE
+# define UNIC_SIZEOF_UINTMAX UNIC_SIZEOF_BY_UMAX(UINTMAX_MAX)
 #endif
 
 #ifdef UINTMAX_WIDTH
@@ -83,10 +94,8 @@ typedef UNIC_UINTMAX_TYPE unic_uintmax_t;
 
 #ifdef UNIC_FALLBACK
 
-# ifndef __uintmax_t_defined
-#  define __uintmax_t_defined
-typedef unic_uintmax_t uintmax_t;
-# endif
+/* uintmax_t must be defined together with intmax_t,
+ * include the intmax_t header instead for this typedef */
 
 #ifndef UINTMAX_MAX
 # define UINTMAX_MAX UNIC_UINTMAX_MAX

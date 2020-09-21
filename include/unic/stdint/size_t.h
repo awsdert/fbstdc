@@ -83,9 +83,173 @@ typedef UNIC_SIZE_TYPE unic_size_t;
 
 #ifdef UNIC_FALLBACK
 
+# ifndef ___int_size_t_h
+#  define ___int_size_t_h
+# ifndef __size_t_defined__
+#  define __size_t_defined__
 # ifndef __size_t_defined
 #  define __size_t_defined
+# ifndef _size_t_defined_
+#  define _size_t_defined_
+# ifndef _size_t_defined
+#  define _size_t_defined
+# ifndef __SIZE_T_DEFINED__
+#  define __SIZE_T_DEFINED__
+# ifndef __SIZE_T_DEFINED
+#  define __SIZE_T_DEFINED
+# ifndef _SIZE_T_DEFINED_
+#  define _SIZE_T_DEFINED_
+# ifndef _SIZE_T_DEFINED
+#  define _SIZE_T_DEFINED
+# ifndef __size_t__
+#  define __size_t__
+# ifndef __size_t
+/* Apparently __size_t can be a typedef,
+ * avoid messing with it in that scenario then
+*/
+#  if !defined(__DragonFly__) \
+	|| !defined(__FreeBSD__) \
+	|| !defined(__FreeBSD_kernel__) \
+	|| !defined(__VMS__)
+#   define __size_t
+#  endif
+# ifndef _size_t_
+#  define _size_t_
+# ifndef _size_t
+#  define _size_t
+# ifndef __SIZE_T__
+#  define __SIZE_T__
+# ifndef __SIZE_T
+#  define __SIZE_T
+# ifndef _SIZE_T_
+#  define _SIZE_T_
+# ifndef _SIZE_T
+#  define _SIZE_T
+# ifndef __BSD_SIZE_T_DEFINED__
+#  define __BSD_SIZE_T_DEFINED__
+# ifndef __BSD_SIZE_T_DEFINED
+#  define __BSD_SIZE_T_DEFINED
+# ifndef _BSD_SIZE_T_DEFINED_
+#  define _BSD_SIZE_T_DEFINED_
+# ifndef _BSD_SIZE_T_DEFINED
+#  define _BSD_SIZE_T_DEFINED
+# ifndef __BSD_SIZE_T__
+#  define __BSD_SIZE_T__
+# ifndef __BSD_SIZE_T
+#  define __BSD_SIZE_T
+# ifndef _BSD_SIZE_T_
+#  define _BSD_SIZE_T_
+# ifndef _BSD_SIZE_T
+#  define _BSD_SIZE_T
+# ifndef __SYS_SIZE_T_DEFINED__
+#  define __SYS_SIZE_T_DEFINED__
+# ifndef __SYS_SIZE_T_DEFINED
+#  define __SYS_SIZE_T_DEFINED
+# ifndef _SYS_SIZE_T_DEFINED_
+#  define _SYS_SIZE_T_DEFINED_
+# ifndef _SYS_SIZE_T_DEFINED
+#  define _SYS_SIZE_T_DEFINED
+# ifndef __SYS_SIZE_T__
+#  define __SYS_SIZE_T__
+# ifndef __SYS_SIZE_T
+#  define __SYS_SIZE_T
+# ifndef _SYS_SIZE_T_
+#  define _SYS_SIZE_T_
+# ifndef _SYS_SIZE_T
+#  define _SYS_SIZE_T
+# ifndef __GCC_SIZE_T_DEFINED__
+#  define __GCC_SIZE_T_DEFINED__
+# ifndef __GCC_SIZE_T_DEFINED
+#  define __GCC_SIZE_T_DEFINED
+# ifndef _GCC_SIZE_T_DEFINED_
+#  define _GCC_SIZE_T_DEFINED_
+# ifndef _GCC_SIZE_T_DEFINED
+#  define _GCC_SIZE_T_DEFINED
+# ifndef __GCC_SIZE_T__
+#  define __GCC_SIZE_T__
+# ifndef __GCC_SIZE_T
+#  define __GCC_SIZE_T
+# ifndef _GCC_SIZE_T_
+#  define _GCC_SIZE_T_
+# ifndef _GCC_SIZE_T
+#  define _GCC_SIZE_T
+# ifndef __SIZET_DEFINED__
+#  define __SIZET_DEFINED__
+# ifndef __SIZET_DEFINED
+#  define __SIZET_DEFINED
+# ifndef _SIZET_DEFINED_
+#  define _SIZET_DEFINED_
+# ifndef _SIZET_DEFINED
+#  define _SIZET_DEFINED
+# ifndef __SIZET__
+#  define __SIZET__
+# ifndef __SIZET
+#  define __SIZET
+# ifndef _SIZET_
+#  define _SIZET_
+# ifndef _SIZET
+#  define _SIZET
+# ifndef __T_SIZE__
+#  define __T_SIZE__
+# ifndef __T_SIZE
+#  define __T_SIZE
+# ifndef _T_SIZE_
+#  define _T_SIZE_
+# ifndef _T_SIZE
+#  define _T_SIZE
 typedef unic_size_t size_t;
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
 # endif
 
 #ifndef SIZE_MAX

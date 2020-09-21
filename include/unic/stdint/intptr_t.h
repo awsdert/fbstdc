@@ -1,4 +1,5 @@
 #ifndef UNIC_INTPTR_C
+#include "uintptr_t.h"
 #include "ssize_t.h"
 
 /* Since these macros can function as fallbacks check for originals 1st */
@@ -21,7 +22,7 @@
 # define UNIC_INTPTR_END_BIT UNIC_INTPTR_MIN
 #endif
 
-#ifdef SIZEOF_SIZE
+#ifdef SIZEOF_INTPTR
 # define UNIC_SIZEOF_INTPTR SIZEOF_INTPTR
 #else
 # define UNIC_SIZEOF_INTPTR UNIC_SIZEOF_BY_IMAX(INTPTR_MAX)
@@ -89,9 +90,174 @@ typedef UNIC_INTPTR_TYPE unic_intptr_t;
 
 #ifdef UNIC_FALLBACK
 
+# ifndef ___int_intptr_t_h
+#  define ___int_intptr_t_h
+# ifndef __intptr_t_defined__
+#  define __intptr_t_defined__
 # ifndef __intptr_t_defined
 #  define __intptr_t_defined
+# ifndef _intptr_t_defined_
+#  define _intptr_t_defined_
+# ifndef _intptr_t_defined
+#  define _intptr_t_defined
+# ifndef __INTPTR_T_DEFINED__
+#  define __INTPTR_T_DEFINED__
+# ifndef __INTPTR_T_DEFINED
+#  define __INTPTR_T_DEFINED
+# ifndef _INTPTR_T_DEFINED_
+#  define _INTPTR_T_DEFINED_
+# ifndef _INTPTR_T_DEFINED
+#  define _INTPTR_T_DEFINED
+# ifndef __intptr_t__
+#  define __intptr_t__
+# ifndef __intptr_t
+/* Apparently __intptr_t can be a typedef,
+ * avoid messing with it in that scenario then
+*/
+#  if !defined(__DragonFly__) \
+	|| !defined(__FreeBSD__) \
+	|| !defined(__FreeBSD_kernel__) \
+	|| !defined(__VMS__)
+#   define __intptr_t
+#  endif
+# ifndef _intptr_t_
+#  define _intptr_t_
+# ifndef _intptr_t
+#  define _intptr_t
+# ifndef __INTPTR_T__
+#  define __INTPTR_T__
+# ifndef __INTPTR_T
+#  define __INTPTR_T
+# ifndef _INTPTR_T_
+#  define _INTPTR_T_
+# ifndef _INTPTR_T
+#  define _INTPTR_T
+# ifndef __BSD_INTPTR_T_DEFINED__
+#  define __BSD_INTPTR_T_DEFINED__
+# ifndef __BSD_INTPTR_T_DEFINED
+#  define __BSD_INTPTR_T_DEFINED
+# ifndef _BSD_INTPTR_T_DEFINED_
+#  define _BSD_INTPTR_T_DEFINED_
+# ifndef _BSD_INTPTR_T_DEFINED
+#  define _BSD_INTPTR_T_DEFINED
+# ifndef __BSD_INTPTR_T__
+#  define __BSD_INTPTR_T__
+# ifndef __BSD_INTPTR_T
+#  define __BSD_INTPTR_T
+# ifndef _BSD_INTPTR_T_
+#  define _BSD_INTPTR_T_
+# ifndef _BSD_INTPTR_T
+#  define _BSD_INTPTR_T
+# ifndef __SYS_INTPTR_T_DEFINED__
+#  define __SYS_INTPTR_T_DEFINED__
+# ifndef __SYS_INTPTR_T_DEFINED
+#  define __SYS_INTPTR_T_DEFINED
+# ifndef _SYS_INTPTR_T_DEFINED_
+#  define _SYS_INTPTR_T_DEFINED_
+# ifndef _SYS_INTPTR_T_DEFINED
+#  define _SYS_INTPTR_T_DEFINED
+# ifndef __SYS_INTPTR_T__
+#  define __SYS_INTPTR_T__
+# ifndef __SYS_INTPTR_T
+#  define __SYS_INTPTR_T
+# ifndef _SYS_INTPTR_T_
+#  define _SYS_INTPTR_T_
+# ifndef _SYS_INTPTR_T
+#  define _SYS_INTPTR_T
+# ifndef __GCC_INTPTR_T_DEFINED__
+#  define __GCC_INTPTR_T_DEFINED__
+# ifndef __GCC_INTPTR_T_DEFINED
+#  define __GCC_INTPTR_T_DEFINED
+# ifndef _GCC_INTPTR_T_DEFINED_
+#  define _GCC_INTPTR_T_DEFINED_
+# ifndef _GCC_INTPTR_T_DEFINED
+#  define _GCC_INTPTR_T_DEFINED
+# ifndef __GCC_INTPTR_T__
+#  define __GCC_INTPTR_T__
+# ifndef __GCC_INTPTR_T
+#  define __GCC_INTPTR_T
+# ifndef _GCC_INTPTR_T_
+#  define _GCC_INTPTR_T_
+# ifndef _GCC_INTPTR_T
+#  define _GCC_INTPTR_T
+# ifndef __INTPTRT_DEFINED__
+#  define __INTPTRT_DEFINED__
+# ifndef __INTPTRT_DEFINED
+#  define __INTPTRT_DEFINED
+# ifndef _INTPTRT_DEFINED_
+#  define _INTPTRT_DEFINED_
+# ifndef _INTPTRT_DEFINED
+#  define _INTPTRT_DEFINED
+# ifndef __INTPTRT__
+#  define __INTPTRT__
+# ifndef __INTPTRT
+#  define __INTPTRT
+# ifndef _INTPTRT_
+#  define _INTPTRT_
+# ifndef _INTPTRT
+#  define _INTPTRT
+# ifndef __T_INTPTR__
+#  define __T_INTPTR__
+# ifndef __T_INTPTR
+#  define __T_INTPTR
+# ifndef _T_INTPTR_
+#  define _T_INTPTR_
+# ifndef _T_INTPTR
+#  define _T_INTPTR
 typedef unic_intptr_t intptr_t;
+typedef unic_uintptr_t uintptr_t;
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
+# endif
 # endif
 
 #ifndef INTPTR_MAX
