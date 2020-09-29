@@ -47,6 +47,11 @@
 # define bitsof(T) (UNIC_CHAR_BIT * sizeof(T))
 #endif
 
+# define unic_rotate( NUM, BITS, OP1, OP2 ) \
+	(((NUM) OP1 (BITS))|((NUM) OP2 (bitsof(NUM) - (BITS))))
+# define unic_rol( NUM, BITS ) unic_rotate( NUM, BITS, <<, >> )
+# define unic_ror( NUM, BITS ) unic_rotate( NUM, BITS, >>, << )
+
 #define UNIC_SQUARE(VAL) ((VAL)*(VAL))
 #define UNIC___MAX(IMAX_FOR_SIZE) (1U | ((IMAX_FOR_SIZE) << 1))
 #define UNIC___MIN(IMAX_FOR_SIZE) ((-(IMAX_FOR_SIZE))-1)
