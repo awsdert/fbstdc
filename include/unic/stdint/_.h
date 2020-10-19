@@ -50,6 +50,11 @@ typedef unsigned char uchar_t;
 # endif
 #endif /* CHAR_MAX*/
 
+# ifndef __bool_t_defined
+#  define __bool_t_defined
+typedef uchar_t bool_t;
+# endif
+
 #ifdef SHRT_MAX
 # ifndef __short_t_defined
 #  define __short_t_defined
