@@ -62,9 +62,9 @@
 
 #ifdef UNIC__SYS_WIN64
 #define UNIC_SYS_WIN64
-#elif defined( UNIC__SYS_WIN16
+#elif defined( UNIC__SYS_WIN16 )
 #define UNIC_SYS_WIN16
-#elif defined( UNIC__SYS_WIN32
+#elif defined( UNIC__SYS_WIN32 )
 #define UNIC_SYS_WIN32
 #elif defined( UNIC__SYS_LINUX )
 #define UNIC_SYS_LINUX
